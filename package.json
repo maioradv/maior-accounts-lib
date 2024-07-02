@@ -1,0 +1,26 @@
+{
+  "name": "@maioradv/accounts-lib",
+  "version": "1.0.0",
+  "description": "JS lib for Maior Accounts Api",
+  "repository": "https://github.com/maioradv/maior-accounts-lib.git",
+  "author": "Maior ADV Srl",
+  "license": "MIT",
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "axios": "^1.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "keywords": [
+    "typescript",
+    "maior"
+  ]
+}
