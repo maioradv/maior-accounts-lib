@@ -1,14 +1,14 @@
 import { ConfigError } from "./error"
 import { ApiVersion, LATEST_API_VERSION, SUPPORTED_API_VERSIONS, WithRequired } from "./types"
 
-export type RenovatioAppApiConfigs = {
+export type ApiConfigs = {
   host:string,
   version?:ApiVersion
 }
 
-export type ApiConfigs = RenovatioAppApiConfigs & WithRequired<RenovatioAppApiConfigs,'version'>
+export type ValidatedApiConfigs = ApiConfigs & WithRequired<ApiConfigs,'version'>
 
-export function validateConfigs(configs:RenovatioAppApiConfigs): ApiConfigs {
+export function validateConfigs(configs:ApiConfigs): ValidatedApiConfigs {
   if(!configs.host) throw new ConfigError(`Missing config param: host`)
   if(configs.version && !SUPPORTED_API_VERSIONS.includes(configs.version)) throw new ConfigError(`Version ${configs.version} is not supported anymore`)
 

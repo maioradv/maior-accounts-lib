@@ -1,6 +1,6 @@
-import renovatioAppApi, { ApiVersion, GraphApiError } from "../src";
+import { accountsApiClient, ApiVersion, GraphApiError } from "../src";
 
-const api = renovatioAppApi({
+const api = accountsApiClient({
   host:'localhost:3000',
   version:ApiVersion.July24
 })
@@ -33,4 +33,4 @@ const api = renovatioAppApi({
   ]
 }).then(v => console.log(v)).catch(e => console.log(e))*/
 
-api.pages.list().then(v => console.log(v)).catch(e => console.log(e instanceof GraphApiError))
+//api.pages.list().then(v => console.log(v)).catch(e => console.log(e instanceof GraphApiError))

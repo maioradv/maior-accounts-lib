@@ -39,7 +39,7 @@ export class ApiModule {
   }
 }
 
-export interface RenovatioAppApiI {
+export interface ClientApiI {
   auth:() => void,
 }
 

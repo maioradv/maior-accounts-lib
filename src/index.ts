@@ -1,11 +1,11 @@
-import RenovatioAppApi from "./client";
-import { RenovatioAppApiConfigs } from "./config";
+import { AccountsApiClient } from "./client";
+import { ApiConfigs } from "./config";
 
 export * from './types'
 export * from './error'
 
-export type renovatioAppApiOptions = RenovatioAppApiConfigs
+export type AccountsApiOptions = ApiConfigs
 
-export default function renovatioAppApi(opt:renovatioAppApiOptions): RenovatioAppApi {
-  return new RenovatioAppApi(opt)
+export function accountsApiClient(opt:AccountsApiOptions): AccountsApiClient {
+  return new AccountsApiClient(opt)
 }
