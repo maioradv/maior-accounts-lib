@@ -37,6 +37,10 @@ export class AccountsApiClient implements ClientApiI
     this.dashboardAccesses = new DashboardAccesses(this.client)
   }
 
+  _setAccessToken(accessToken:string) {
+    this.client.defaults.headers.common[ApiHeader.Authorization] = `Bearer ${accessToken}`
+  }
+
   async auth(): Promise<AccessTokenDto> {
     const access = this.configApi.credentials.apiToken ? await this.authentication.token(this.configApi.credentials.apiToken) : await this.authentication.signIn(this.configApi.credentials.signIn)
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
