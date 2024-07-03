@@ -25,15 +25,6 @@ export type DashboardType = {
   updatedAt: Date;
 }
 
-export type DashboardAccess = {
-  id: number;
-  customerId: number;
-  dashboardId: number;
-  roleId: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 export type CreateDashboard = Omit<Dashboard,'id'|'createdAt'|'updatedAt'|'slug'|'api'|'domain'>
 export type UpdateDashboard = Partial<CreateDashboard>
 

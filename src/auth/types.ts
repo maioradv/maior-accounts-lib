@@ -1,6 +1,6 @@
 import { ApiToken } from "../apitokens/types";
 import { Customer } from "../customers/types";
-import { DashboardAccess } from "../dashboards/types";
+import { DashboardAccess } from "../dashboard-accesses/types";
 
 export type SignInDto = {
   email:string;
