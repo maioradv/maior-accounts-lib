@@ -1,6 +1,7 @@
 import { Axios } from "axios"
 import { GraphApiError, RestApiError } from "./error"
 import { ResolverDef } from "./core/types/resolver"
+import { AccessTokenDto } from "./auth/types"
 
 export class ApiModule {
   constructor(private client:Axios){}
@@ -40,7 +41,8 @@ export class ApiModule {
 }
 
 export interface ClientApiI {
-  auth:() => void,
+  auth: () => Promise<AccessTokenDto>,
+  authRefresh: () => Promise<AccessTokenDto>,
 }
 
 export interface RestApiModuleI {

@@ -1,10 +1,13 @@
-import { accountsApiClient, ApiVersion, GraphApiError } from "../src";
+import { accountsApiClient, ApiVersion } from "../src";
 
 async function example() {
   const api = accountsApiClient({
     host:'localhost:3000',
     credentials:{
-      apiToken:'',
+      signIn:{
+        email:'test@test.it',
+        password:'Cavalli1!'
+      },
     },
     version:ApiVersion.July24
   })
@@ -13,11 +16,19 @@ async function example() {
     email:'test@test.it',
     password:'Cavalli1!'
   })*/
-  api.customers.findAll().then(v => console.log(v)).catch(e => console.log(e))
-  //api.customers.findOne(2).then(v => console.log(v)).catch(e => console.log(e))
-  //api.authentication.me().then(v => console.log(v)).catch(e => console.log(e))
+  /*api.dashboards.create({
+    dashboardTypeId:1,
+    masterToken:'851e98a6-1a2f-461f-961e-d09b1877f3ee',
+    name:'CapriBlu',
+    plan:'pro'
+  }).then(v => console.log(v))*/
+  /*api.dashboardAccesses.create({
+    customerId:1,
+    dashboardId:1,
+    roleId:1
+  })*/
+  //api.customers.findAll().then(v => console.log(v)).catch(e => console.log(e))
+  api.authentication.me().then(v => console.log(v.Customer?.DashboardAccess)).catch(e => console.log(e))
 }
 
 example()
-
-//api.pages.list().then(v => console.log(v)).catch(e => console.log(e instanceof GraphApiError))

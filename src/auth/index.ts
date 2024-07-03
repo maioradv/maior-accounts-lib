@@ -6,8 +6,8 @@ export default class Auth extends ApiModule {
     return this._call<AccessTokenDto>('post','/auth/login',data)
   }
 
-  refresh(): Promise<AccessTokenDto> {
-    return this._call<AccessTokenDto>('post','/auth/refresh')
+  refresh(refreshToken?:string): Promise<AccessTokenDto> {
+    return this._call<AccessTokenDto>('post','/auth/refresh',{refreshToken})
   }
 
   token(apiToken:string): Promise<AccessTokenDto> {
