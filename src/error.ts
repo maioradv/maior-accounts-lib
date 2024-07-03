@@ -8,6 +8,7 @@ export class ApiError extends Error {
 }
 
 export class ConfigError extends ApiError {}
+export class AuthError extends ApiError {}
 export class RestApiError extends ApiError {
   constructor(e:Error|AxiosError) {
     let message = e.message

@@ -10,8 +10,8 @@ export class ApiModule {
       const response = await this.client.request({
         method:method,
         url:path,
-        data: method !== 'get' ? data ?? null : null,
-        params: method === 'get' ? data ?? null : null
+        data: method !== 'get' ? data ?? undefined : undefined,
+        params: method === 'get' ? data ?? undefined : undefined
       })
       return response.data as Res
     }

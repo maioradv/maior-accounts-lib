@@ -1,8 +1,10 @@
+import { AuthParams } from "./auth"
 import { ConfigError } from "./error"
 import { ApiVersion, LATEST_API_VERSION, SUPPORTED_API_VERSIONS, WithRequired } from "./types"
 
 export type ApiConfigs = {
   host:string,
+  credentials:AuthParams,
   version?:ApiVersion
 }
 
