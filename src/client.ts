@@ -12,7 +12,7 @@ import { AuthError } from "./error";
 export class AccountsApiClient implements ClientApiI
 {
   protected SANDBOX_URL = 'http://localhost:3000'
-  protected PRODUCTION_URL = 'https://accounts.maior.cloud'
+  protected PRODUCTION_URL = 'https://api.accounts.maior.cloud'
   protected client:Axios;
   protected configApi:ValidatedApiConfigs;
   authentication:Auth;
