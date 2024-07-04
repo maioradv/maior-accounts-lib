@@ -2,7 +2,7 @@ import { accountsApiClient, ApiVersion } from "../src";
 
 async function example() {
   const api = accountsApiClient({
-    host:'localhost:3000',
+    sandbox:true,
     credentials:{
       signIn:{
         email:'test@test.it',

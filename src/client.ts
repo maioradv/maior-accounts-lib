@@ -7,9 +7,12 @@ import Customers from "./customers";
 import { AccessTokenDto } from "./auth/types";
 import Dashboards from "./dashboards";
 import DashboardAccesses from "./dashboard-accesses";
+import { AuthError } from "./error";
 
 export class AccountsApiClient implements ClientApiI
 {
+  protected SANDBOX_URL = 'http://localhost:3000'
+  protected PRODUCTION_URL = 'https://accounts.maior.cloud'
   protected client:Axios;
   protected configApi:ValidatedApiConfigs;
   authentication:Auth;
@@ -24,7 +27,7 @@ export class AccountsApiClient implements ClientApiI
   }
 
   protected _initClient(): Axios {
-    axios.defaults.baseURL = 'http://' + this.configApi.host;
+    axios.defaults.baseURL = this.configApi.sandbox ? this.SANDBOX_URL : this.PRODUCTION_URL;
     axios.defaults.headers.common[ApiHeader.ApiVersion] = this.configApi.version
     axios.defaults.headers.common['Content-Type'] = 'application/json'
     return axios
@@ -42,6 +45,7 @@ export class AccountsApiClient implements ClientApiI
   }
 
   async auth(): Promise<AccessTokenDto> {
+    if(!this.configApi.credentials) throw new AuthError('Missing credentials')
     const access = this.configApi.credentials.apiToken ? await this.authentication.token(this.configApi.credentials.apiToken) : await this.authentication.signIn(this.configApi.credentials.signIn)
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
