@@ -1,6 +1,7 @@
 import { ApiToken } from "../apitokens/types";
 import { Customer } from "../customers/types";
 import { DashboardAccess } from "../dashboard-accesses/types";
+import { Dashboard } from "../dashboards/types";
 
 export type SignInDto = {
   email:string;
@@ -37,7 +38,7 @@ export type JwtPayload = {
 
 export type Jwt = {
   payload:JwtPayload;
-  Customer?:Customer & { DashboardAccess: DashboardAccess[]};
+  Customer?:Customer & { DashboardAccess: (DashboardAccess & {Dashboard: Dashboard})[]};
   ApiToken?:ApiToken;
 }
 
