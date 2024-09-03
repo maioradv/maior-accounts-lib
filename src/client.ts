@@ -56,4 +56,10 @@ export class AccountsApiClient implements ClientApiI
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
   }
+
+  async authRecover(email:string,code:number): Promise<AccessTokenDto> {
+    const access = await this.authentication.code({email,code})
+    this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
+    return access
+  }
 }

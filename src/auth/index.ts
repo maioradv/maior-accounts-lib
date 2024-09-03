@@ -14,6 +14,14 @@ export default class Auth extends ApiModule {
     return this._call<AccessTokenDto>('post',`/auth/token/${apiToken}`)
   }
 
+  recover(email:string): Promise<void> {
+    return this._call<void>('post',`/auth/recover`,{email})
+  }
+
+  code({email,code}:{email:string,code:number}): Promise<AccessTokenDto> {
+    return this._call<AccessTokenDto>('post',`/auth/code`,{email,code})
+  }
+
   me(): Promise<Jwt> {
     return this._call<Jwt>('get',`/auth/me`)
   }

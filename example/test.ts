@@ -2,16 +2,16 @@ import { accountsApiClient, ApiVersion } from "../src";
 
 async function example() {
   const api = accountsApiClient({
-    sandbox:true,
-    credentials:{
+    //sandbox:true,
+    /*credentials:{
       signIn:{
         email:'test@test.it',
         password:'Cavalli1!'
       },
-    },
+    },*/
     version:ApiVersion.July24
   })
-  await api.auth()
+  await api.authRefresh()
   /*await api.customers.create({
     email:'test@test.it',
     password:'Cavalli1!'
