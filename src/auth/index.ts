@@ -1,5 +1,6 @@
+import { Customer } from "../customers/types";
 import { ApiModule } from "../model";
-import { AccessTokenDto, Jwt, SignInDto } from "./types";
+import { AccessTokenDto, Jwt, SignInDto, UpdateProfileDto } from "./types";
 
 export default class Auth extends ApiModule {
   signIn(data:SignInDto): Promise<AccessTokenDto> {
@@ -24,5 +25,9 @@ export default class Auth extends ApiModule {
 
   me(): Promise<Jwt> {
     return this._call<Jwt>('get',`/auth/me`)
+  }
+
+  updateProfile(data:UpdateProfileDto): Promise<Customer> {
+    return this._call<Customer>('patch',`/auth/me`,data)
   }
 }

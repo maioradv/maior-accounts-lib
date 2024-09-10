@@ -1,5 +1,5 @@
 import { ApiToken } from "../apitokens/types";
-import { Customer } from "../customers/types";
+import { Customer, UpdateCustomer } from "../customers/types";
 import { DashboardAccess } from "../dashboard-accesses/types";
 import { Dashboard } from "../dashboards/types";
 
@@ -41,6 +41,8 @@ export type Jwt = {
   Customer?:Customer & { DashboardAccess: (DashboardAccess & {Dashboard: Dashboard})[]};
   ApiToken?:ApiToken;
 }
+
+export type UpdateProfileDto = Omit<UpdateCustomer,'active'|'email'>
 
 export enum Permission {
   read_customers = 'read_customers',
