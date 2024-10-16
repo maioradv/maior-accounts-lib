@@ -10,7 +10,7 @@ export type Dashboard = {
   domain: string;
   api: string;
   plan: string;
-  masterToken: string;
+  masterToken: string|null;
   dashboardTypeId: number;
   createdAt: Date;
   updatedAt: Date;
@@ -25,7 +25,9 @@ export type DashboardType = {
   updatedAt: Date;
 }
 
-export type CreateDashboard = Omit<Dashboard,'id'|'createdAt'|'updatedAt'|'slug'|'api'|'domain'>
+type PartialDasboard = Partial<Omit<Dashboard,'id'|'createdAt'|'updatedAt'|'slug'|'api'|'domain'>>
+
+export type CreateDashboard = PartialDasboard & WithRequired<PartialDasboard,'name'|'plan'|'dashboardTypeId'>
 export type UpdateDashboard = Partial<CreateDashboard>
 
 export type SortingDashboardDto = SortingParamsDto<{
