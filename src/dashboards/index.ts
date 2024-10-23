@@ -31,7 +31,7 @@ export default class Dashboards extends ApiModule implements RestApiModuleI, Gra
   }
 
   removeMany(id:number|number[]): Promise<RemoveGQL> {
-    return this._graphql<RemoveGQL>(dashboardsResolvers.mutation.removeDashboard,{
+    return this._graphql<RemoveGQL>(dashboardsResolvers.mutation.removeDashboards,{
       id
     })
   }

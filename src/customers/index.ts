@@ -31,7 +31,7 @@ export default class Customers extends ApiModule implements RestApiModuleI, Grap
   }
 
   removeMany(id:number|number[]): Promise<RemoveGQL> {
-    return this._graphql<RemoveGQL>(customersResolvers.mutation.removeCustomer,{
+    return this._graphql<RemoveGQL>(customersResolvers.mutation.removeCustomers,{
       id
     })
   }

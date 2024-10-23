@@ -1,7 +1,7 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const customersResolvers:Resolvers<['customers'],['removeCustomer']> = {
+export const customersResolvers:Resolvers<['customers'],['removeCustomers']> = {
   query:{
     customers:{
       name:'customers',
@@ -33,8 +33,8 @@ export const customersResolvers:Resolvers<['customers'],['removeCustomer']> = {
     },
   },
   mutation:{
-    removeCustomer:{
-      name:'removeCustomer',
+    removeCustomers:{
+      name:'removeCustomers',
       query: `mutation CustomerDelete($id: [Int!]!){
         removeCustomer(id: $id) {
           count

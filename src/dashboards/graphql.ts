@@ -1,7 +1,7 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const dashboardsResolvers:Resolvers<['dashboards'],['removeDashboard']> = {
+export const dashboardsResolvers:Resolvers<['dashboards'],['removeDashboards']> = {
   query:{
     dashboards:{
       name:'dashboards',
@@ -36,8 +36,8 @@ export const dashboardsResolvers:Resolvers<['dashboards'],['removeDashboard']> =
     },
   },
   mutation:{
-    removeDashboard:{
-      name:'removeDashboard',
+    removeDashboards:{
+      name:'removeDashboards',
       query: `mutation DashboardDelete($id: [Int!]!){
         removeDashboard(id: $id) {
           count
