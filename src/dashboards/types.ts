@@ -28,7 +28,7 @@ export type DashboardType = {
 type PartialDasboard = Partial<Omit<Dashboard,'id'|'createdAt'|'updatedAt'|'slug'|'api'|'domain'>>
 
 export type CreateDashboard = PartialDasboard & WithRequired<PartialDasboard,'name'|'plan'|'dashboardTypeId'>
-export type UpdateDashboard = Partial<CreateDashboard>
+export type UpdateDashboard = Partial<Omit<CreateDashboard,'dashboardTypeId'>>
 
 export type SortingDashboardDto = SortingParamsDto<{
   plan?:Sorting,
