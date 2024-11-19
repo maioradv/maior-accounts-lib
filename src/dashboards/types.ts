@@ -5,6 +5,7 @@ import { WithRequired } from "../types";
 
 export type Dashboard = {
   id: number;
+  status: DashboardStatus;
   slug: string;
   name: string;
   domain: string;
@@ -16,6 +17,13 @@ export type Dashboard = {
   updatedAt: Date;
 }
 
+export enum DashboardStatus {
+  installing = 'installing',
+  removing = 'removing',
+  suspended = 'suspended',
+  online = 'online'
+}
+
 export type DashboardType = {
   id: number;
   slug: string;
@@ -25,7 +33,7 @@ export type DashboardType = {
   updatedAt: Date;
 }
 
-type PartialDasboard = Partial<Omit<Dashboard,'id'|'createdAt'|'updatedAt'|'slug'|'api'|'domain'>>
+type PartialDasboard = Partial<Omit<Dashboard,'id'|'createdAt'|'updatedAt'|'slug'|'api'|'domain'|'status'|'masterToken'>>
 
 export type CreateDashboard = PartialDasboard & WithRequired<PartialDasboard,'name'|'plan'|'dashboardTypeId'>
 export type UpdateDashboard = Partial<Omit<CreateDashboard,'dashboardTypeId'>>
