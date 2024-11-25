@@ -1,7 +1,7 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule } from "../model";
-import { Company, CreateCompany, UpdateCompany, QueryCompanyDto, CompanyAddress, CreateCompanyAddress } from "./types";
+import { Company, CreateCompany, UpdateCompany, QueryCompanyDto, CompanyAddress, CreateCompanyAddress, SavedPayment, CreateSavedPayment } from "./types";
 
 export default class Companies extends ApiModule implements RestApiModuleI {
   create(data:CreateCompany) {
@@ -30,5 +30,13 @@ export default class Companies extends ApiModule implements RestApiModuleI {
 
   findAllAddresses(id:number) {
     return this._call<CompanyAddress[]>('get',`/companies/${id}/addresses`)
+  }
+
+  savePayment(id:number,data:CreateSavedPayment) {
+    return this._call<SavedPayment>('post',`/companies/${id}/payments`,data)
+  }
+
+  findAllSavedPayments(id:number) {
+    return this._call<SavedPayment[]>('get',`/companies/${id}/payments`)
   }
 }

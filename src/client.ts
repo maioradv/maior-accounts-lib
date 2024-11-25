@@ -12,6 +12,7 @@ import Operators from "./operators"
 import OperatorRoles from "./operators/roles";
 import Companies from "./companies";
 import CompanyAddresses from "./companies/addresses";
+import SavedPayments from "./companies/payments";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -27,6 +28,7 @@ export class AccountsApiClient implements ClientApiI
   operatorRoles:OperatorRoles;
   companies:Companies;
   companyAddresses:CompanyAddresses;
+  savedPayments:SavedPayments;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -50,6 +52,7 @@ export class AccountsApiClient implements ClientApiI
     this.operatorRoles = new OperatorRoles(this.client)
     this.companies = new Companies(this.client)
     this.companyAddresses = new CompanyAddresses(this.client)
+    this.savedPayments = new SavedPayments(this.client)
   }
 
   _setAccessToken(accessToken:string) {

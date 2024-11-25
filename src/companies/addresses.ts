@@ -1,5 +1,5 @@
 import { ApiModule } from "../model";
-import {CompanyAddress, UpdateCompanyAddress } from "./types";
+import { CompanyAddress, UpdateCompanyAddress } from "./types";
 
 export default class CompanyAddresses extends ApiModule {
   update(id:number,data:UpdateCompanyAddress) {

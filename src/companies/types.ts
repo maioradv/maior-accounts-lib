@@ -54,7 +54,22 @@ export type CompanyAddress = {
   updatedAt: Date;
 }
 
-type PartialCompanyAddress= Partial<Omit<CompanyAddress,'id'|'createdAt'|'updatedAt'>>
+type PartialCompanyAddress = Partial<Omit<CompanyAddress,'id'|'createdAt'|'updatedAt'>>
 
 export type CreateCompanyAddress = PartialCompanyAddress & WithRequired<PartialCompanyAddress,'street'|'number'|'city'|'province'|'zipCode'|'country'|'companyId'>
 export type UpdateCompanyAddress = PartialCompanyAddress
+
+export type SavedPayment = {
+  id: number;
+  name: string; 
+  type: string; 
+  expireAt: Date; 
+  companyId: number; 
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+type PartialSavedPayment = Partial<Omit<SavedPayment,'id'|'createdAt'|'updatedAt'|'companyId'>>
+
+export type CreateSavedPayment = PartialSavedPayment & WithRequired<PartialSavedPayment,'name'|'type'|'expireAt'>
+export type UpdateSavedPayment = Omit<CreateSavedPayment,'name'|'type'>
