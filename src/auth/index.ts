@@ -1,33 +1,23 @@
-import { Customer } from "../customers/types";
+import { Axios } from "axios";
 import { ApiModule } from "../model";
-import { AccessTokenDto, Jwt, SignInDto, UpdateProfileDto } from "./types";
+import { Jwt } from "./types";
+import AuthApiToken from "./apitoken";
+import { AuthCustomer } from "./customer";
+import AuthOperator from "./operator";
 
 export default class Auth extends ApiModule {
-  signIn(data:SignInDto): Promise<AccessTokenDto> {
-    return this._call<AccessTokenDto>('post','/auth/login',data)
+  readonly apitoken:AuthApiToken;
+  readonly customer:AuthCustomer;
+  readonly operator:AuthOperator;
+
+  constructor(client:Axios){
+    super(client)
+    this.apitoken = new AuthApiToken(client)
+    this.customer = new AuthCustomer(client)
+    this.operator = new AuthOperator(client)
   }
 
-  refresh(refreshToken?:string): Promise<AccessTokenDto> {
-    return this._call<AccessTokenDto>('post','/auth/refresh',{refreshToken})
-  }
-
-  token(apiToken:string): Promise<AccessTokenDto> {
-    return this._call<AccessTokenDto>('post',`/auth/token/${apiToken}`)
-  }
-
-  recover(email:string): Promise<void> {
-    return this._call<void>('post',`/auth/recover`,{email})
-  }
-
-  code({email,code}:{email:string,code:number}): Promise<AccessTokenDto> {
-    return this._call<AccessTokenDto>('post',`/auth/code`,{email,code})
-  }
-
-  me(): Promise<Jwt> {
-    return this._call<Jwt>('get',`/auth/me`)
-  }
-
-  updateProfile(data:UpdateProfileDto): Promise<Customer> {
-    return this._call<Customer>('patch',`/auth/me`,data)
+  me<T = Jwt>() {
+    return this._call<T>('get',`/auth/me`)
   }
 }

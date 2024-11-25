@@ -1,7 +1,8 @@
 import { ApiToken } from "../apitokens/types";
-import { Customer, UpdateCustomer } from "../customers/types";
+import { Customer } from "../customers/types";
 import { DashboardAccess } from "../dashboard-accesses/types";
 import { Dashboard } from "../dashboards/types";
+import { Operator } from "../operators/types";
 
 export type SignInDto = {
   email:string;
@@ -17,7 +18,8 @@ export type AccessTokenDto = {
 
 export enum JwtContextType {
   customer = 'Customer',
-  apiToken = 'ApiToken'
+  apiToken = 'ApiToken',
+  operator = 'Operator'
 }
 
 export type JwtPayloadContext = {
@@ -36,17 +38,30 @@ export type JwtPayload = {
   context: JwtPayloadContext;
 }
 
-export type Jwt = {
-  payload:JwtPayload;
+export type JwtContext = {
   Customer?:Customer & { DashboardAccess: (DashboardAccess & {Dashboard: Dashboard})[]};
+  Operator?:Operator;
   ApiToken?:ApiToken;
 }
 
-export type UpdateProfileDto = Omit<UpdateCustomer,'active'|'email'>
+export type Jwt = {
+  payload:JwtPayload;
+} & JwtContext
+
+export type JwtWith<T extends keyof JwtContext> = {
+  payload: JwtPayload;
+} & Record<T, JwtContext[T]>
 
 export enum Permission {
   read_customers = 'read_customers',
   write_customers = 'write_customers',
-  read_dashboard = 'read_dashboard',
-  write_dashboard = 'write_dashboard',
+  read_dashboards = 'read_dashboards',
+  write_dashboards = 'write_dashboards',
+  read_operators = 'read_operators',
+  write_operators = 'write_operators',
+  read_operator_roles = 'read_operator_roles',
+  write_operator_roles = 'write_operator_roles',
+  manage_own_dashboards = 'manage_own_dashboards',
+  manage_own_companies = 'manage_own_companies',
+  manage_own_orders = 'manage_own_orders'
 }

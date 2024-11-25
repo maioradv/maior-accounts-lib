@@ -4,7 +4,7 @@ async function example() {
   const api = accountsApiClient({
     //sandbox:true,
     /*credentials:{
-      signIn:{
+      customer:{
         email:'test@test.it',
         password:'Cavalli1!'
       },

@@ -13,6 +13,7 @@ export type Dashboard = {
   plan: string;
   masterToken: string|null;
   dashboardTypeId: number;
+  orderId: number|null;
   createdAt: Date;
   updatedAt: Date;
 }

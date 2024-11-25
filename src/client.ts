@@ -8,6 +8,10 @@ import { AccessTokenDto } from "./auth/types";
 import Dashboards from "./dashboards";
 import DashboardAccesses from "./dashboard-accesses";
 import { AuthError } from "./error";
+import Operators from "./operators"
+import OperatorRoles from "./operators/roles";
+import Companies from "./companies";
+import CompanyAddresses from "./companies/addresses";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -19,6 +23,10 @@ export class AccountsApiClient implements ClientApiI
   customers:Customers;
   dashboards:Dashboards;
   dashboardAccesses:DashboardAccesses;
+  operators:Operators;
+  operatorRoles:OperatorRoles;
+  companies:Companies;
+  companyAddresses:CompanyAddresses;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -38,6 +46,10 @@ export class AccountsApiClient implements ClientApiI
     this.customers = new Customers(this.client)
     this.dashboards = new Dashboards(this.client)
     this.dashboardAccesses = new DashboardAccesses(this.client)
+    this.operators = new Operators(this.client)
+    this.operatorRoles = new OperatorRoles(this.client)
+    this.companies = new Companies(this.client)
+    this.companyAddresses = new CompanyAddresses(this.client)
   }
 
   _setAccessToken(accessToken:string) {
@@ -46,19 +58,24 @@ export class AccountsApiClient implements ClientApiI
 
   async auth(): Promise<AccessTokenDto> {
     if(!this.configApi.credentials) throw new AuthError('Missing credentials')
-    const access = this.configApi.credentials.apiToken ? await this.authentication.token(this.configApi.credentials.apiToken) : await this.authentication.signIn(this.configApi.credentials.signIn)
+    const access = 
+      this.configApi.credentials.apiToken ? await this.authentication.apitoken.token(this.configApi.credentials.apiToken) : 
+      this.configApi.credentials.operator ? await this.authentication.operator.signIn(this.configApi.credentials.operator) :
+      await this.authentication.customer.signIn(this.configApi.credentials.customer)
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
   }
 
   async authRefresh(refreshToken?:string): Promise<AccessTokenDto> {
-    const access = await this.authentication.refresh(refreshToken)
+    const access = 
+      this.configApi.credentials?.operator ? await this.authentication.operator.refresh(refreshToken) : 
+      await this.authentication.customer.refresh(refreshToken)
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
   }
 
   async authRecover(email:string,code:number): Promise<AccessTokenDto> {
-    const access = await this.authentication.code({email,code})
+    const access = await this.authentication.customer.code({email,code})
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
   }

@@ -4,7 +4,8 @@ import { ApiVersion, LATEST_API_VERSION, SUPPORTED_API_VERSIONS, WithRequired } 
 
 export type ApiConfigs = {
   credentials?:{
-    signIn?:SignInDto,
+    customer?:SignInDto,
+    operator?:SignInDto,
     apiToken?:string
   },
   version?:ApiVersion,
@@ -15,7 +16,7 @@ export type ValidatedApiConfigs = ApiConfigs & WithRequired<ApiConfigs,'version'
 
 export function validateConfigs(configs:ApiConfigs): ValidatedApiConfigs {
   if(configs.version && !SUPPORTED_API_VERSIONS.includes(configs.version)) throw new ConfigError(`Version ${configs.version} is not supported anymore`)
-  if(configs.credentials && !configs.credentials.apiToken && !configs.credentials.signIn) throw new ConfigError(`Credentials are required`)
+  if(configs.credentials && !configs.credentials.apiToken && !configs.credentials.customer && !configs.credentials.operator) throw new ConfigError(`Credentials are required`)
 
   return {
     ...configs,
