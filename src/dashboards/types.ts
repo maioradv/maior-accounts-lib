@@ -1,4 +1,4 @@
-import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, EnumClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { WithRequired } from "../types";
@@ -50,6 +50,7 @@ export type ClausesDashboardDto = WhereClausesDto<{
   name?:StringClause,
   domain?:StringClause,
   plan?:StringClause,
+  status?:EnumClause<DashboardStatus>
 }>
 
 export type QueryDashboardDto = QueryParamsDto<SortingDashboardDto,ClausesDashboardDto>

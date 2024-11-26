@@ -39,7 +39,6 @@ export type SortingServiceDto = SortingParamsDto<{
 }>
 
 export type ClausesServiceDto = WhereClausesDto<{
-  description?:StringClause,
   search?:StringClause,
   price?:NumberClause,
   startAt?:DateClause,
