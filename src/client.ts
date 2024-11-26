@@ -6,13 +6,15 @@ import Auth from "./auth";
 import Customers from "./customers";
 import { AccessTokenDto } from "./auth/types";
 import Dashboards from "./dashboards";
-import DashboardAccesses from "./dashboard-accesses";
+import DashboardAccesses from "./dashboards/accesses";
 import { AuthError } from "./error";
 import Operators from "./operators"
 import OperatorRoles from "./operators/roles";
 import Companies from "./companies";
 import CompanyAddresses from "./companies/addresses";
 import SavedPayments from "./companies/payments";
+import Products from "./products";
+import DashboardTypes from "./dashboards/dash-types";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -29,6 +31,8 @@ export class AccountsApiClient implements ClientApiI
   companies:Companies;
   companyAddresses:CompanyAddresses;
   savedPayments:SavedPayments;
+  products:Products;
+  dashboardTypes:DashboardTypes;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -53,6 +57,8 @@ export class AccountsApiClient implements ClientApiI
     this.companies = new Companies(this.client)
     this.companyAddresses = new CompanyAddresses(this.client)
     this.savedPayments = new SavedPayments(this.client)
+    this.products = new Products(this.client)
+    this.dashboardTypes = new DashboardTypes(this.client)
   }
 
   _setAccessToken(accessToken:string) {
