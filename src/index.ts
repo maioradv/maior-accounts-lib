@@ -9,9 +9,9 @@ export * from './error'
 export * from './auth/types'
 export * from './customers/types'
 export * from './dashboards/types'
-export * from './dashboard-accesses/types'
 export * from './operators/types'
 export * from './companies/types'
+export * from './services/types'
 
 export function accountsApiClient(opt:AccountsApiConfigs): AccountsApiClient {
   return new AccountsApiClient(opt)
