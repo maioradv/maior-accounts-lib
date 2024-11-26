@@ -18,6 +18,8 @@ import DashboardTypes from "./dashboards/dash-types";
 import Services from "./services";
 import Plans from "./plans";
 import ScheduledPayments from "./scheduled-payments";
+import ServiceTemplates from "./service-templates";
+import PaymentMethods from "./payment-methods";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -39,6 +41,8 @@ export class AccountsApiClient implements ClientApiI
   services:Services;
   plans:Plans;
   scheduledPayments:ScheduledPayments;
+  serviceTemplates:ServiceTemplates;
+  paymentMethods:PaymentMethods;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -68,6 +72,8 @@ export class AccountsApiClient implements ClientApiI
     this.services = new Services(this.client)
     this.plans = new Plans(this.client)
     this.scheduledPayments = new ScheduledPayments(this.client)
+    this.serviceTemplates = new ServiceTemplates(this.client)
+    this.paymentMethods = new PaymentMethods(this.client)
   }
 
   _setAccessToken(accessToken:string) {

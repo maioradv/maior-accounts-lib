@@ -16,6 +16,8 @@ export * from './companies/types'
 export * from './services/types'
 export * from './plans/types'
 export * from './scheduled-payments/types'
+export * from './service-templates/types'
+export * from './payment-methods/types'
 
 export function accountsApiClient(opt:AccountsApiConfigs): AccountsApiClient {
   return new AccountsApiClient(opt)
