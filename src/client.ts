@@ -20,6 +20,9 @@ import Plans from "./plans";
 import ScheduledPayments from "./scheduled-payments";
 import ServiceTemplates from "./service-templates";
 import PaymentMethods from "./payment-methods";
+import ActivityLogs from "./activitylogs";
+import Invoices from "./invoices";
+import Contracts from "./contracts";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -43,6 +46,9 @@ export class AccountsApiClient implements ClientApiI
   scheduledPayments:ScheduledPayments;
   serviceTemplates:ServiceTemplates;
   paymentMethods:PaymentMethods;
+  activityLogs:ActivityLogs;
+  invoices:Invoices;
+  contracts:Contracts;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -74,6 +80,9 @@ export class AccountsApiClient implements ClientApiI
     this.scheduledPayments = new ScheduledPayments(this.client)
     this.serviceTemplates = new ServiceTemplates(this.client)
     this.paymentMethods = new PaymentMethods(this.client)
+    this.activityLogs = new ActivityLogs(this.client)
+    this.invoices = new Invoices(this.client)
+    this.contracts = new Contracts(this.client)
   }
 
   _setAccessToken(accessToken:string) {
