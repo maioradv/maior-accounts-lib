@@ -23,6 +23,8 @@ import PaymentMethods from "./payment-methods";
 import ActivityLogs from "./activitylogs";
 import Invoices from "./invoices";
 import Contracts from "./contracts";
+import Orders from "./orders";
+import OrderItems from "./orders/items";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -49,6 +51,8 @@ export class AccountsApiClient implements ClientApiI
   activityLogs:ActivityLogs;
   invoices:Invoices;
   contracts:Contracts;
+  orders:Orders;
+  orderItems:OrderItems;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -83,6 +87,8 @@ export class AccountsApiClient implements ClientApiI
     this.activityLogs = new ActivityLogs(this.client)
     this.invoices = new Invoices(this.client)
     this.contracts = new Contracts(this.client)
+    this.orders = new Orders(this.client)
+    this.orderItems = new OrderItems(this.client)
   }
 
   _setAccessToken(accessToken:string) {

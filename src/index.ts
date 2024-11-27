@@ -20,6 +20,7 @@ export * from './service-templates/types'
 export * from './payment-methods/types'
 export * from './invoices/types'
 export * from './contracts/types'
+export * from './orders/types'
 
 export function accountsApiClient(opt:AccountsApiConfigs): AccountsApiClient {
   return new AccountsApiClient(opt)
