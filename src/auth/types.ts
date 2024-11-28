@@ -1,7 +1,6 @@
 import { ApiToken } from "../apitokens/types";
 import { Customer } from "../customers/types";
-import { DashboardAccess } from "../dashboard-accesses/types";
-import { Dashboard } from "../dashboards/types";
+import { Dashboard, DashboardAccess } from "../dashboards/types";
 import { Operator } from "../operators/types";
 
 export type SignInDto = {
