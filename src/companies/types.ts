@@ -14,6 +14,7 @@ export type Company = {
   billingAddressId: number|null;
   savedPaymentId: number|null;
   customerId: number|null;
+  published: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
