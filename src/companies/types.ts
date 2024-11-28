@@ -1,4 +1,4 @@
-import { StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { WithRequired } from "../types";
@@ -35,6 +35,7 @@ export type ClausesCompanyrDto = WhereClausesDto<{
   pec?:StringClause,
   email?:StringClause,
   search?:StringClause,
+  published?:BooleanClause
 }>
 
 export type QueryCompanyDto = QueryParamsDto<SortingCompanyDto,ClausesCompanyrDto>
