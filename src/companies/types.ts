@@ -13,14 +13,14 @@ export type Company = {
   taxCode: string|null;
   billingAddressId: number|null;
   savedPaymentId: number|null;
-  customerId: number;
+  customerId: number|null;
   createdAt: Date;
   updatedAt: Date;
 }
 
 type PartialCompany = Partial<Omit<Company,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'|'customerId'>
+export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'>
 export type UpdateCompany = PartialCompany
 
 export type SortingCompanyDto = SortingParamsDto<{
@@ -63,7 +63,7 @@ export type SavedPayment = {
   id: number;
   name: string; 
   type: string; 
-  expireAt: Date; 
+  expireAt: Date|null; 
   companyId: number; 
   createdAt: Date;
   updatedAt: Date;
@@ -71,5 +71,5 @@ export type SavedPayment = {
 
 type PartialSavedPayment = Partial<Omit<SavedPayment,'id'|'createdAt'|'updatedAt'|'companyId'>>
 
-export type CreateSavedPayment = PartialSavedPayment & WithRequired<PartialSavedPayment,'name'|'type'|'expireAt'>
+export type CreateSavedPayment = PartialSavedPayment & WithRequired<PartialSavedPayment,'name'|'type'>
 export type UpdateSavedPayment = Omit<CreateSavedPayment,'name'|'type'>
