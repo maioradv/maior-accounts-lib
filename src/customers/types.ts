@@ -17,6 +17,7 @@ type PartialCustomer = Partial<Omit<Customer,'id'|'createdAt'|'updatedAt'>>
 
 export type CreateCustomer = PartialCustomer & WithRequired<PartialCustomer,'email'|'password'>
 export type UpdateCustomer = PartialCustomer
+export type RegisterCustomer = Omit<CreateCustomer,'active'>
 
 export type SortingCustomerDto = SortingParamsDto<{
   active?:Sorting,

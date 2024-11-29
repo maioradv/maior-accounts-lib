@@ -1,7 +1,7 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const customersResolvers:Resolvers<['customers'],['removeCustomers']> = {
+export const customersResolvers:Resolvers<['customers'],['removeCustomers','registerCustomer']> = {
   query:{
     customers:{
       name:'customers',
@@ -41,6 +41,20 @@ export const customersResolvers:Resolvers<['customers'],['removeCustomers']> = {
         }
       }`,
     },   
+    registerCustomer:{
+      name:'registerCustomer',
+      query: `mutation CustomerRegister($email: String!, $password: String!, $name: String){
+        registerCustomer(email: $email, password: $password, name: $name) {
+          id
+          email
+          password
+          name
+          active
+          createdAt
+          updatedAt
+        }
+      }`,
+    },
   }
 }
 
