@@ -1,6 +1,5 @@
 import { ApiToken } from "../apitokens/types";
 import { Customer } from "../customers/types";
-import { Dashboard, DashboardAccess } from "../dashboards/types";
 import { Operator } from "../operators/types";
 
 export type SignInDto = {
@@ -38,7 +37,7 @@ export type JwtPayload = {
 }
 
 export type JwtContext = {
-  Customer?:Customer & { DashboardAccess: (DashboardAccess & {Dashboard: Dashboard})[]};
+  Customer?:Customer;
   Operator?:Operator;
   ApiToken?:ApiToken;
 }
@@ -58,9 +57,32 @@ export enum Permission {
   write_dashboards = 'write_dashboards',
   read_operators = 'read_operators',
   write_operators = 'write_operators',
+  read_products = 'read_products',
+  write_products = 'write_products',
+  read_plans = 'read_plans',
+  write_plans = 'write_plans',
+  read_contracts = 'read_contracts',
+  write_contracts = 'write_contracts',
+  read_invoices = 'read_invoices',
+  write_invoices = 'write_invoices',
+  read_activity_logs = 'read_activity_logs',
+  write_activity_logs = 'write_activity_logs',
+  read_service_templates = 'read_service_templates',
+  write_service_templates = 'write_service_templates',
   read_operator_roles = 'read_operator_roles',
   write_operator_roles = 'write_operator_roles',
+  read_companies = 'read_companies',
+  write_companies = 'write_companies',
+  read_services = 'read_services',
+  write_services = 'write_services',
+  read_scheduled_payments = 'read_scheduled_payments',
+  write_scheduled_payments = 'write_scheduled_payments',
+  read_payment_methods = 'read_payment_methods',
+  write_payment_methods = 'write_payment_methods',
+  read_orders = 'read_orders',
+  write_orders = 'write_orders',
   manage_own_dashboards = 'manage_own_dashboards',
   manage_own_companies = 'manage_own_companies',
-  manage_own_orders = 'manage_own_orders'
+  manage_own_orders = 'manage_own_orders',
+  register_customer = 'register_customer'
 }
