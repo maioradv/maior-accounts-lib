@@ -25,6 +25,7 @@ import Invoices from "./invoices";
 import Contracts from "./contracts";
 import Orders from "./orders";
 import OrderItems from "./orders/items";
+import Me from "./me";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -53,6 +54,7 @@ export class AccountsApiClient implements ClientApiI
   contracts:Contracts;
   orders:Orders;
   orderItems:OrderItems;
+  me:Me;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -89,6 +91,7 @@ export class AccountsApiClient implements ClientApiI
     this.contracts = new Contracts(this.client)
     this.orders = new Orders(this.client)
     this.orderItems = new OrderItems(this.client)
+    this.me = new Me(this.client)
   }
 
   _setAccessToken(accessToken:string) {

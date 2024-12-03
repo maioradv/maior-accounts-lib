@@ -28,7 +28,7 @@ async function example() {
     roleId:1
   })*/
   //api.customers.findAll().then(v => console.log(v)).catch(e => console.log(e))
-  api.authentication.me().then(v => console.log(v.Customer?.DashboardAccess)).catch(e => console.log(e))
+  
 }
 
 example()
