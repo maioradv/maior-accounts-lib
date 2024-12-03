@@ -21,7 +21,10 @@ export type Company = {
 
 type PartialCompany = Partial<Omit<Company,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'>
+export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'> & {
+  addresses:CreateCompanyAddress[],
+  payments:CreateSavedPayment[]
+}
 export type UpdateCompany = PartialCompany
 
 export type SortingCompanyDto = SortingParamsDto<{
