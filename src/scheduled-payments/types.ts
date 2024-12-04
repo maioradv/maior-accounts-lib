@@ -50,6 +50,7 @@ export type SortingScheduledPaymentDto = SortingParamsDto<{
 
 export type ClausesScheduledPaymentDto = WhereClausesDto<{
   amount?:NumberClause,
+  serviceId?:NumberClause,
   date?:DateClause,
   from?:DateClause,
   to?:DateClause,
