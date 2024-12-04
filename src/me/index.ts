@@ -12,6 +12,10 @@ export default class Me extends ApiModule {
     this.companies = new Companies(client)
   }
 
+  info() {
+    return this._call<Customer>('get',`/me`)
+  }
+
   update(data:UpdateOwnCustomer) {
     return this._call<Customer>('patch',`/me`,data)
   }
