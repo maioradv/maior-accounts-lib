@@ -1,33 +1,20 @@
 import { accountsApiClient, ApiVersion } from "../src";
+import credentials from './credentials.json'
 
 async function example() {
   const api = accountsApiClient({
-    //sandbox:true,
-    /*credentials:{
-      customer:{
-        email:'test@test.it',
-        password:'Cavalli1!'
-      },
-    },*/
+    sandbox:true,
+    credentials,
     version:ApiVersion.July24
   })
-  await api.authRefresh()
-  /*await api.customers.create({
-    email:'test@test.it',
-    password:'Cavalli1!'
+  await api.auth()
+  api.authentication.me().then(v => console.log(v))
+  /*await api.products.create({
+    name:'Abbonamento Premium Ti Delizio',
+    price:29.90,
+    slug:'SUB1.3',
+    recurringInterval: RecurringInterval.month,
   })*/
-  /*api.dashboards.create({
-    dashboardTypeId:1,
-    masterToken:'851e98a6-1a2f-461f-961e-d09b1877f3ee',
-    name:'CapriBlu',
-    plan:'pro'
-  }).then(v => console.log(v))*/
-  /*api.dashboardAccesses.create({
-    customerId:1,
-    dashboardId:1,
-    roleId:1
-  })*/
-  //api.customers.findAll().then(v => console.log(v)).catch(e => console.log(e))
   
 }
 
