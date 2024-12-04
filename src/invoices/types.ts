@@ -8,7 +8,7 @@ export type Invoice = {
   description: string|null;
   number: string;
   date: Date;
-  orderItemId: number;
+  orderId: number;
   translations: Translation[];
   createdAt: Date;
   updatedAt: Date;
@@ -16,8 +16,8 @@ export type Invoice = {
 
 type PartialInvoice = Partial<Omit<Invoice,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateInvoice = PartialInvoice & WithRequired<PartialInvoice,'number'|'date'|'orderItemId'>
-export type UpdateInvoice = Omit<PartialInvoice,'orderItemId'>
+export type CreateInvoice = PartialInvoice & WithRequired<PartialInvoice,'number'|'date'|'orderId'>
+export type UpdateInvoice = Omit<PartialInvoice,'orderId'>
 
 export type SortingInvoiceDto = SortingParamsDto<{
   date?:Sorting,

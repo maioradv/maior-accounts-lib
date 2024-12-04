@@ -8,6 +8,7 @@ export type Contract = {
   description: string|null;
   number: string;
   date: Date;
+  orderId: number;
   translations: Translation[];
   createdAt: Date;
   updatedAt: Date;
@@ -15,8 +16,8 @@ export type Contract = {
 
 type PartialContract = Partial<Omit<Contract,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateContract = PartialContract & WithRequired<PartialContract,'number'|'date'>
-export type UpdateContract = PartialContract
+export type CreateContract = PartialContract & WithRequired<PartialContract,'number'|'date'|'orderId'>
+export type UpdateContract = Omit<PartialContract,'orderId'>
 
 export type SortingContractDto = SortingParamsDto<{
   date?:Sorting,
