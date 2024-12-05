@@ -3,13 +3,28 @@ import { ApiModule } from "../model";
 import Companies from "./companies";
 import { Customer, CustomerProfile } from "../customers/types";
 import { UpdateOwnCustomer, UpdateOwnProfile } from "./types";
+import CompanyAddresses from "./company-addresses";
+import SavedPayments from "./saved-payments";
+import Dashboards from "./dashboards";
+import DashboardAccesses from "./dashboard-accesses";
+import ScheduledPayments from "./scheduled-payments";
 
 export default class Me extends ApiModule {
   readonly companies:Companies;
+  readonly companyAddresses:CompanyAddresses;
+  readonly savedPayments:SavedPayments;
+  readonly dashboards:Dashboards;
+  readonly dashboardAccesses:DashboardAccesses;
+  readonly scheduledPayments:ScheduledPayments;
 
   constructor(client:Axios){
     super(client)
     this.companies = new Companies(client)
+    this.companyAddresses = new CompanyAddresses(client)
+    this.savedPayments = new SavedPayments(client)
+    this.dashboards = new Dashboards(client)
+    this.dashboardAccesses = new DashboardAccesses(client)
+    this.scheduledPayments = new ScheduledPayments(client)
   }
 
   info() {

@@ -1,5 +1,6 @@
 import { CreateCompany, CreateCompanyAddress, CreateSavedPayment, QueryCompanyDto, SortingCompanyDto } from "../companies/types";
 import { UpdateCustomer, UpdateCustomerProfile } from "../customers/types";
+import { CreateDashboardAccess } from "../dashboards/types";
 
 export type UpdateOwnCustomer = Omit<UpdateCustomer,'active'|'email'|'dashboards'>
 export type UpdateOwnProfile = UpdateCustomerProfile
@@ -12,3 +13,5 @@ export type CreateOwnCompanyAddress = CreateCompanyAddress
 export type UpdateOwnCompanyAddress = Partial<CreateOwnCompanyAddress>
 export type CreateOwnSavedPayment = CreateSavedPayment
 export type UpdateOwnSavedPayment = Partial<CreateOwnSavedPayment>
+export type CreateOwnDashboardAccess = Omit<CreateDashboardAccess,'dashboardId'>
+export type UpdateOwnDashboardAccess = Partial<Omit<CreateOwnDashboardAccess,'customerId'>>
