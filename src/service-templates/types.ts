@@ -5,9 +5,10 @@ import { Translation, WithRequired } from "../types";
 
 export type ServiceTemplate = {
   id: number;
-  description: string;
+  description: string|null;
   quantity: number|null;
   price: number|null;
+  totalCycles:number|null;
   productId: number;
   planId: number;
   translations: Translation[];
@@ -17,7 +18,7 @@ export type ServiceTemplate = {
 
 type PartialServiceTemplate = Partial<Omit<ServiceTemplate,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateServiceTemplate = PartialServiceTemplate & WithRequired<PartialServiceTemplate,'description'|'productId'|'planId'>
+export type CreateServiceTemplate = PartialServiceTemplate & WithRequired<PartialServiceTemplate,'productId'|'planId'>
 export type UpdateServiceTemplate = PartialServiceTemplate
 
 export type SortingServiceTemplateDto = SortingParamsDto<{
