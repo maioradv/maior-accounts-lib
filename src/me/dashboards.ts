@@ -20,4 +20,8 @@ export default class Dashboards extends ApiModule {
   findAllAccesses(id:number) {
     return this._call<DashboardAccess[]>('get',`/me/dashboards/${id}/accesses`)
   }
+
+  ownAccess(id:number) {
+    return this._call<DashboardAccess>('get',`/me/dashboards/${id}/own-access`)
+  }
 }
