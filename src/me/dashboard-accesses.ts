@@ -6,7 +6,7 @@ import { QueryOwnDashboardAccessDto, UpdateOwnDashboardAccess, FindAllOwnDashboa
 
 export default class DashboardAccesses extends ApiModule {
   findAll(args:QueryOwnDashboardAccessDto = {}) {
-    return this._call<PaginatedDto<FindAllOwnDashboardAccess>>('get','/me/dashboards',queryParams(args))
+    return this._call<PaginatedDto<FindAllOwnDashboardAccess>>('get','/me/dashboard-accesses',queryParams(args))
   } 
 
   update(id:number,data:UpdateOwnDashboardAccess) {

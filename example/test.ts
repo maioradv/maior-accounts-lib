@@ -9,12 +9,7 @@ async function example() {
   })
   await api.auth()
   //api.authentication.me().then(v => console.log(v))
-  await api.products.create({
-    name:'Test',
-    price:10,
-    recurringInterval:RecurringInterval.week,
-    slug:'T.1'
-  })
+  //await api.me.dashboardAccesses.findAll().then(v => console.log(v))
 }
 
 example()
