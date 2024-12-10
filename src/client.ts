@@ -67,10 +67,11 @@ export class AccountsApiClient implements ClientApiI
   }
 
   protected _initClient(): Axios {
-    axios.defaults.baseURL = this.configApi.sandbox ? this.SANDBOX_URL : this.PRODUCTION_URL;
-    axios.defaults.headers.common[ApiHeader.ApiVersion] = this.configApi.version
-    axios.defaults.headers.common['Content-Type'] = 'application/json'
-    return axios
+    const client = axios.create()
+    client.defaults.baseURL = this.configApi.sandbox ? this.SANDBOX_URL : this.PRODUCTION_URL;
+    client.defaults.headers.common[ApiHeader.ApiVersion] = this.configApi.version
+    client.defaults.headers.common['Content-Type'] = 'application/json'
+    return client
   }
 
   protected _initModules() {
