@@ -22,6 +22,7 @@ export type Service = {
   cancelAt: Date|null; 
   status: ServiceStatus;
   productId: number; 
+  orderId: number; 
   published: boolean; 
   translations: Translation[];
   active: boolean;
@@ -31,8 +32,8 @@ export type Service = {
 
 type PartialService = Partial<Omit<Service,'id'|'createdAt'|'updatedAt'|'status'>>
 
-export type CreateService = PartialService & WithRequired<PartialService,'description'|'price'|'productId'>
-export type UpdateService = Omit<PartialService,'startAt'|'quantity'>
+export type CreateService = PartialService & WithRequired<PartialService,'description'|'price'|'productId'|'orderId'>
+export type UpdateService = Omit<PartialService,'startAt'|'quantity'|'productId'|'orderId'>
 
 export type SortingServiceDto = SortingParamsDto<{
   published?:Sorting,

@@ -9,6 +9,7 @@ export type Plan = {
   description: string|null;
   slug: string;
   dashboardTypeId: number;
+  orderTemplateId: number|null;
   position: number|null;
   translations: Translation[];
   published: boolean;

@@ -9,10 +9,11 @@ async function example() {
   })
   await api.auth()
   //api.authentication.me().then(v => console.log(v))
-  await api.serviceTemplates.create({
-    planId:1,
-    productId:1,
-    
+  await api.products.create({
+    name:'Test',
+    price:10,
+    recurringInterval:RecurringInterval.week,
+    slug:'T.1'
   })
 }
 

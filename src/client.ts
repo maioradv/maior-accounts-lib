@@ -18,7 +18,7 @@ import DashboardTypes from "./dashboards/dash-types";
 import Services from "./services";
 import Plans from "./plans";
 import ScheduledPayments from "./scheduled-payments";
-import ServiceTemplates from "./service-templates";
+import OrderTemplates from "./order-templates";
 import PaymentMethods from "./payment-methods";
 import ActivityLogs from "./activitylogs";
 import Invoices from "./invoices";
@@ -26,6 +26,8 @@ import Contracts from "./contracts";
 import Orders from "./orders";
 import OrderItems from "./orders/items";
 import Me from "./me";
+import ServiceTemplates from "./order-templates/service-templates";
+import OrderItemTemplates from "./order-templates/item-templates";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -47,7 +49,9 @@ export class AccountsApiClient implements ClientApiI
   services:Services;
   plans:Plans;
   scheduledPayments:ScheduledPayments;
+  orderTemplates:OrderTemplates;
   serviceTemplates:ServiceTemplates;
+  orderItemTemplates:OrderItemTemplates;
   paymentMethods:PaymentMethods;
   activityLogs:ActivityLogs;
   invoices:Invoices;
@@ -84,7 +88,9 @@ export class AccountsApiClient implements ClientApiI
     this.services = new Services(this.client)
     this.plans = new Plans(this.client)
     this.scheduledPayments = new ScheduledPayments(this.client)
+    this.orderTemplates = new OrderTemplates(this.client)
     this.serviceTemplates = new ServiceTemplates(this.client)
+    this.orderItemTemplates = new OrderItemTemplates(this.client)
     this.paymentMethods = new PaymentMethods(this.client)
     this.activityLogs = new ActivityLogs(this.client)
     this.invoices = new Invoices(this.client)

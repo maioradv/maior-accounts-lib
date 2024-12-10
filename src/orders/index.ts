@@ -1,7 +1,7 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule } from "../model";
-import { Order, CreateOrder, UpdateOrder, QueryOrderDto, OrderItem, CreateOrderItem } from "./types";
+import { Order, CreateOrder, UpdateOrder, QueryOrderDto, OrderItem, CreateOrderItem, FindOneOrderDto } from "./types";
 
 export default class Orders extends ApiModule implements RestApiModuleI {
   create(data:CreateOrder) {
@@ -13,7 +13,7 @@ export default class Orders extends ApiModule implements RestApiModuleI {
   } 
 
   findOne(id:number) {
-    return this._call<Order>('get',`/orders/${id}`)
+    return this._call<FindOneOrderDto>('get',`/orders/${id}`)
   }
 
   update(id:number,data:UpdateOrder) {
