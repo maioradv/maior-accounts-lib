@@ -31,7 +31,7 @@ import OrderItemTemplates from "./order-templates/item-templates";
 
 export class AccountsApiClient implements ClientApiI
 {
-  protected SANDBOX_URL = 'http://localhost:3000'
+  protected SANDBOX_URL = 'http://localhost:3001'
   protected PRODUCTION_URL = 'https://api.accounts.maior.cloud'
   protected client:Axios;
   protected configApi:ValidatedApiConfigs;
