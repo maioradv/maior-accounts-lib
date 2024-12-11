@@ -115,9 +115,9 @@ export class AccountsApiClient implements ClientApiI
     return access
   }
 
-  async authRefresh(refreshToken?:string): Promise<AccessTokenDto> {
+  async authRefresh(refreshToken?:string,context:'customer'|'operator' = 'customer'): Promise<AccessTokenDto> {
     const access = 
-      this.configApi.credentials?.operator ? await this.authentication.operator.refresh(refreshToken) : 
+      context == 'operator' ? await this.authentication.operator.refresh(refreshToken) : 
       await this.authentication.customer.refresh(refreshToken)
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
