@@ -12,14 +12,14 @@ import Operators from "./operators"
 import OperatorRoles from "./operators/roles";
 import Companies from "./companies";
 import CompanyAddresses from "./companies/addresses";
-import SavedPayments from "./companies/payments";
+import PaymentMethods from "./companies/payments";
 import Products from "./products";
 import DashboardTypes from "./dashboards/dash-types";
 import Services from "./services";
 import Plans from "./plans";
 import ScheduledPayments from "./scheduled-payments";
 import OrderTemplates from "./order-templates";
-import PaymentMethods from "./payment-methods";
+import PurchaseMethods from "./purchase-methods";
 import ActivityLogs from "./activitylogs";
 import Invoices from "./invoices";
 import Contracts from "./contracts";
@@ -43,7 +43,7 @@ export class AccountsApiClient implements ClientApiI
   operatorRoles:OperatorRoles;
   companies:Companies;
   companyAddresses:CompanyAddresses;
-  savedPayments:SavedPayments;
+  paymentMethods:PaymentMethods;
   products:Products;
   dashboardTypes:DashboardTypes;
   services:Services;
@@ -52,7 +52,7 @@ export class AccountsApiClient implements ClientApiI
   orderTemplates:OrderTemplates;
   serviceTemplates:ServiceTemplates;
   orderItemTemplates:OrderItemTemplates;
-  paymentMethods:PaymentMethods;
+  purchaseMethods:PurchaseMethods;
   activityLogs:ActivityLogs;
   invoices:Invoices;
   contracts:Contracts;
@@ -83,7 +83,7 @@ export class AccountsApiClient implements ClientApiI
     this.operatorRoles = new OperatorRoles(this.client)
     this.companies = new Companies(this.client)
     this.companyAddresses = new CompanyAddresses(this.client)
-    this.savedPayments = new SavedPayments(this.client)
+    this.paymentMethods = new PaymentMethods(this.client)
     this.products = new Products(this.client)
     this.dashboardTypes = new DashboardTypes(this.client)
     this.services = new Services(this.client)
@@ -92,7 +92,7 @@ export class AccountsApiClient implements ClientApiI
     this.orderTemplates = new OrderTemplates(this.client)
     this.serviceTemplates = new ServiceTemplates(this.client)
     this.orderItemTemplates = new OrderItemTemplates(this.client)
-    this.paymentMethods = new PaymentMethods(this.client)
+    this.purchaseMethods = new PurchaseMethods(this.client)
     this.activityLogs = new ActivityLogs(this.client)
     this.invoices = new Invoices(this.client)
     this.contracts = new Contracts(this.client)

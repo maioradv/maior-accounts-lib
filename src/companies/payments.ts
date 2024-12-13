@@ -1,12 +1,12 @@
 import { ApiModule } from "../model";
-import { SavedPayment, UpdateSavedPayment } from "./types";
+import { PaymentMethod, UpdatePaymentMethod } from "./types";
 
-export default class SavedPayments extends ApiModule {
-  update(id:number,data:UpdateSavedPayment) {
-    return this._call<SavedPayment>('patch',`/saved-payments/${id}`,data)
+export default class PaymentMethods extends ApiModule {
+  update(id:number,data:UpdatePaymentMethod) {
+    return this._call<PaymentMethod>('patch',`/payment-methods/${id}`,data)
   }
 
   remove(id:number) {
-    return this._call<SavedPayment>('delete',`/saved-payments/${id}`)
+    return this._call<PaymentMethod>('delete',`/payment-methods/${id}`)
   }
 }

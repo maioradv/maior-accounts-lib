@@ -3,15 +3,15 @@ import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { Translation, WithRequired } from "../types";
 
-export enum PaymentMethodType {
+export enum PurchaseMethodType {
   stripe = 'stripe',
   paypal = 'paypal',
   manual = 'manual',
 }
-export type PaymentMethod = {
+export type PurchaseMethod = {
   id: number;
   name: string; 
-  type: PaymentMethodType; 
+  type: PurchaseMethodType; 
   description: string|null;
   offline: boolean;
   position: number|null;
@@ -22,12 +22,12 @@ export type PaymentMethod = {
   updatedAt: Date;
 }
 
-type PartialPaymentMethod = Partial<Omit<PaymentMethod,'id'|'createdAt'|'updatedAt'>>
+type PartialPurchaseMethod = Partial<Omit<PurchaseMethod,'id'|'createdAt'|'updatedAt'>>
 
-export type CreatePaymentMethod = PartialPaymentMethod & WithRequired<PartialPaymentMethod,'name'|'type'>
-export type UpdatePaymentMethod = PartialPaymentMethod
+export type CreatePurchaseMethod = PartialPurchaseMethod & WithRequired<PartialPurchaseMethod,'name'|'type'>
+export type UpdatePurchaseMethod = PartialPurchaseMethod
 
-export type SortingPaymentMethodDto = SortingParamsDto<{
+export type SortingPurchaseMethodDto = SortingParamsDto<{
   name?:Sorting,
   position?:Sorting,
   active?:Sorting,
@@ -35,14 +35,14 @@ export type SortingPaymentMethodDto = SortingParamsDto<{
   type?:Sorting,
 }>
 
-export type ClausesPaymentMethodDto = WhereClausesDto<{
+export type ClausesPurchaseMethodDto = WhereClausesDto<{
   position?:NumberClause,
   name?:StringClause,
   description?:StringClause,
   search?:StringClause,
   active?:BooleanClause,
   published?:BooleanClause,
-  type?:EnumClause<PaymentMethodType>,
+  type?:EnumClause<PurchaseMethodType>,
 }>
 
-export type QueryPaymentMethodDto = QueryParamsDto<SortingPaymentMethodDto,ClausesPaymentMethodDto>
+export type QueryPurchaseMethodDto = QueryParamsDto<SortingPurchaseMethodDto,ClausesPurchaseMethodDto>

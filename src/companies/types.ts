@@ -23,7 +23,7 @@ type PartialCompany = Partial<Omit<Company,'id'|'createdAt'|'updatedAt'>>
 
 export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'> & {
   addresses?:CreateCompanyAddress[],
-  payments?:CreateSavedPayment[]
+  payments?:CreatePaymentMethod[]
 }
 export type UpdateCompany = PartialCompany
 
@@ -64,7 +64,7 @@ type PartialCompanyAddress = Partial<Omit<CompanyAddress,'id'|'createdAt'|'updat
 export type CreateCompanyAddress = PartialCompanyAddress & WithRequired<PartialCompanyAddress,'street'|'number'|'city'|'province'|'zipCode'|'country'>
 export type UpdateCompanyAddress = PartialCompanyAddress
 
-export type SavedPayment = {
+export type PaymentMethod = {
   id: number;
   name: string; 
   type: string; 
@@ -74,7 +74,7 @@ export type SavedPayment = {
   updatedAt: Date;
 }
 
-type PartialSavedPayment = Partial<Omit<SavedPayment,'id'|'createdAt'|'updatedAt'|'companyId'>>
+type PartialPaymentMethod = Partial<Omit<PaymentMethod,'id'|'createdAt'|'updatedAt'|'companyId'>>
 
-export type CreateSavedPayment = PartialSavedPayment & WithRequired<PartialSavedPayment,'name'|'type'>
-export type UpdateSavedPayment = Omit<CreateSavedPayment,'name'|'type'>
+export type CreatePaymentMethod = PartialPaymentMethod & WithRequired<PartialPaymentMethod,'name'|'type'>
+export type UpdatePaymentMethod = Omit<CreatePaymentMethod,'name'|'type'>

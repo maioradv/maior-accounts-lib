@@ -29,7 +29,7 @@ export type Order = {
   taxPercentage:number;
   currency:string;
   transactionId:string;
-  paymentMethodId: number; 
+  purchaseMethodId: number; 
   companyId: number|null;
   customerId: number|null; 
   createdAt: Date;
@@ -70,8 +70,8 @@ export type OrderAdjustment = {
 
 type PartialOrder = Partial<Omit<Order,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateOrder = PartialOrder & WithRequired<PartialOrder,'paymentMethodId'|'totalAmount'|'taxPercentage'>
-export type UpdateOrder = Omit<PartialOrder,'totalAmount'|'taxInclusive'|'taxPercentage'|'currency'|'paymentMethodId'>
+export type CreateOrder = PartialOrder & WithRequired<PartialOrder,'purchaseMethodId'|'totalAmount'|'taxPercentage'>
+export type UpdateOrder = Omit<PartialOrder,'totalAmount'|'taxInclusive'|'taxPercentage'|'currency'|'purchaseMethodId'>
 
 export type FindOneOrderDto = Order & {
   Company:Company,
@@ -82,7 +82,7 @@ export type FindOneOrderDto = Order & {
 }
 
 export type SortingOrderDto = SortingParamsDto<{
-  paymentMethodId?:Sorting,
+  purchaseMethodId?:Sorting,
   companyId?:Sorting,
   customerId?:Sorting,
   totalAmount?:Sorting,
@@ -91,7 +91,7 @@ export type SortingOrderDto = SortingParamsDto<{
 
 export type ClausesOrderDto = WhereClausesDto<{
   search?:StringClause,
-  paymentMethodId?:NumberClause,
+  purchaseMethodId?:NumberClause,
   companyId?:NumberClause,
   customerId?:NumberClause,
   status?:EnumClause<OrderStatus>

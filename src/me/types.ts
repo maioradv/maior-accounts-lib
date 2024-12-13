@@ -1,4 +1,4 @@
-import { CreateCompany, CreateCompanyAddress, CreateSavedPayment, QueryCompanyDto } from "../companies/types";
+import { CreateCompany, CreateCompanyAddress, CreatePaymentMethod, QueryCompanyDto } from "../companies/types";
 import { PaginatedDto } from "../core/dto/pagination";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { UpdateCustomer, UpdateCustomerProfile } from "../customers/types";
@@ -12,8 +12,8 @@ export type UpdateOwnCompany = Partial<Omit<CreateOwnCompany,'addresses'|'paymen
 export type QueryOwnCompanyDto = QueryCompanyDto
 export type CreateOwnCompanyAddress = CreateCompanyAddress
 export type UpdateOwnCompanyAddress = Partial<CreateOwnCompanyAddress>
-export type CreateOwnSavedPayment = CreateSavedPayment
-export type UpdateOwnSavedPayment = Partial<CreateOwnSavedPayment>
+export type CreateOwnPaymentMethod = CreatePaymentMethod
+export type UpdateOwnPaymentMethod = Partial<CreateOwnPaymentMethod>
 export type CreateOwnDashboardAccess = Omit<CreateDashboardAccess,'dashboardId'>
 export type UpdateOwnDashboardAccess = Partial<Omit<CreateOwnDashboardAccess,'customerId'>>
 export type QueryOwnDashboardAccessDto =  QueryParamsDto<Omit<SortingDashboardAccessDto,'customerId'>,Omit<ClausesDashboardAccessDto,'customerId'>>

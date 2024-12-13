@@ -1,8 +1,8 @@
-import { Company, CompanyAddress, SavedPayment } from "../companies/types";
+import { Company, CompanyAddress, PaymentMethod } from "../companies/types";
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule } from "../model";
-import { CreateOwnCompany, UpdateOwnCompany, QueryOwnCompanyDto, CreateOwnCompanyAddress, CreateOwnSavedPayment } from "./types";
+import { CreateOwnCompany, UpdateOwnCompany, QueryOwnCompanyDto, CreateOwnCompanyAddress, CreateOwnPaymentMethod } from "./types";
 
 export default class Companies extends ApiModule implements RestApiModuleI {
   create(data:CreateOwnCompany) {
@@ -33,11 +33,11 @@ export default class Companies extends ApiModule implements RestApiModuleI {
     return this._call<CompanyAddress[]>('get',`/me/companies/${id}/addresses`)
   }
 
-  savePayment(id:number,data:CreateOwnSavedPayment) {
-    return this._call<SavedPayment>('post',`/me/companies/${id}/payments`,data)
+  createPaymentMethod(id:number,data:CreateOwnPaymentMethod) {
+    return this._call<PaymentMethod>('post',`/me/companies/${id}/payment-methods`,data)
   }
 
-  findAllSavedPayments(id:number) {
-    return this._call<SavedPayment[]>('get',`/me/companies/${id}/payments`)
+  findAllPaymentMethods(id:number) {
+    return this._call<PaymentMethod[]>('get',`/me/companies/${id}/payment-methods`)
   }
 }
