@@ -49,6 +49,7 @@ export type OrderItem = {
 export type OrderBreakdown = {
   id: number; 
   amount: number;
+  quantity: number;
   description: string;
   orderId: number; 
   translations: Translation[];
