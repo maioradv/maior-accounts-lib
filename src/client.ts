@@ -28,6 +28,7 @@ import OrderItems from "./orders/items";
 import Me from "./me";
 import ServiceTemplates from "./order-templates/service-templates";
 import OrderItemTemplates from "./order-templates/item-templates";
+import TaxRates from "./taxRates";
 
 export class AccountsApiClient implements ClientApiI
 {
@@ -58,6 +59,7 @@ export class AccountsApiClient implements ClientApiI
   contracts:Contracts;
   orders:Orders;
   orderItems:OrderItems;
+  taxRates:TaxRates;
   me:Me;
 
   constructor(protected config: ApiConfigs) {
@@ -98,6 +100,7 @@ export class AccountsApiClient implements ClientApiI
     this.contracts = new Contracts(this.client)
     this.orders = new Orders(this.client)
     this.orderItems = new OrderItems(this.client)
+    this.taxRates = new TaxRates(this.client)
     this.me = new Me(this.client)
   }
 

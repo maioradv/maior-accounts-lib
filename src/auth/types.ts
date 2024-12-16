@@ -81,6 +81,8 @@ export enum Permission {
   write_purchase_methods = 'write_purchase_methods',
   read_orders = 'read_orders',
   write_orders = 'write_orders',
+  read_tax_rates = 'read_tax_rates',
+  write_tax_rates = 'write_tax_rates',
   manage_own_dashboards = 'manage_own_dashboards',
   manage_own_companies = 'manage_own_companies',
   manage_own_orders = 'manage_own_orders',

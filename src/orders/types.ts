@@ -25,8 +25,7 @@ export type Order = {
   id: number;
   status:OrderStatus;
   totalAmount:number;
-  taxInclusive:boolean;
-  taxPercentage:number;
+  taxRateId:number,
   currency:string;
   transactionId:string;
   purchaseMethodId: number; 
@@ -70,8 +69,8 @@ export type OrderAdjustment = {
 
 type PartialOrder = Partial<Omit<Order,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateOrder = PartialOrder & WithRequired<PartialOrder,'purchaseMethodId'|'totalAmount'|'taxPercentage'>
-export type UpdateOrder = Omit<PartialOrder,'totalAmount'|'taxInclusive'|'taxPercentage'|'currency'|'purchaseMethodId'>
+export type CreateOrder = PartialOrder & WithRequired<PartialOrder,'purchaseMethodId'|'totalAmount'|'taxRateId'>
+export type UpdateOrder = Omit<PartialOrder,'totalAmount'|'taxRateId'|'currency'|'purchaseMethodId'>
 
 export type FindOneOrderDto = Order & {
   Company:Company,

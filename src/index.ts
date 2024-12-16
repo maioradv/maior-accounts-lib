@@ -24,6 +24,7 @@ export * from './plans/types'
 export * from './products/types'
 export * from './scheduled-payments/types'
 export * from './services/types'
+export * from './taxRates/types'
 
 export function accountsApiClient(opt:AccountsApiConfigs): AccountsApiClient {
   return new AccountsApiClient(opt)
