@@ -18,7 +18,7 @@ export type Service = {
   description: string; 
   quantity: number; 
   price: number; 
-  startAt: Date; 
+  startAt: Date|null; 
   cancelAt: Date|null; 
   status: ServiceStatus;
   productId: number; 
