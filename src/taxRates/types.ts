@@ -18,7 +18,7 @@ export type TaxRate = {
 type PartialTaxRate = Partial<Omit<TaxRate,'id'|'createdAt'|'updatedAt'>>
 
 export type CreateTaxRate = PartialTaxRate & WithRequired<PartialTaxRate,'name'|'country'|'percentage'>
-export type UpdateTaxRate = PartialTaxRate
+export type UpdateTaxRate = Omit<PartialTaxRate,'inclusive'|'percentage'|'country'>
 
 export type SortingTaxRateDto = SortingParamsDto<{
   name?:Sorting,

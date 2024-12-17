@@ -1,7 +1,7 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule } from "../model";
-import { Operator, CreateOperator, UpdateOperator, QueryOperatorDto } from "./types";
+import { Operator, CreateOperator, UpdateOperator, QueryOperatorDto, FindAllOperatorDto } from "./types";
 
 export default class Operators extends ApiModule implements RestApiModuleI {
   create(data:CreateOperator) {
@@ -9,7 +9,7 @@ export default class Operators extends ApiModule implements RestApiModuleI {
   }
 
   findAll(args:QueryOperatorDto = {}) {
-    return this._call<PaginatedDto<Operator>>('get','/operators',queryParams(args))
+    return this._call<PaginatedDto<FindAllOperatorDto>>('get','/operators',queryParams(args))
   } 
 
   findOne(id:number) {

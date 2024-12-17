@@ -1,5 +1,5 @@
 import { Permission } from "../auth/types";
-import { BooleanClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { Translation, WithRequired } from "../types";
@@ -24,11 +24,13 @@ export type SortingOperatorDto = SortingParamsDto<{
   active?:Sorting,
   email?:Sorting,
   name?:Sorting,
+  operatorRoleId?:Sorting
 }>
 
 export type ClausesOperatorDto = WhereClausesDto<{
   email?:StringClause,
   active?:BooleanClause,
+  operatorRoleId?:NumberClause
 }>
 
 export type QueryOperatorDto = QueryParamsDto<SortingOperatorDto,ClausesOperatorDto>
@@ -47,6 +49,10 @@ type PartialOperatorRole = Partial<Omit<OperatorRole,'id'|'createdAt'|'updatedAt
 
 export type CreateOperatorRole = PartialOperatorRole & WithRequired<PartialOperatorRole,'name'|'permissions'>
 export type UpdateOperatorRole = PartialOperatorRole
+
+export type FindAllOperatorDto = Operator & {
+  OperatorRole:OperatorRole
+}
 
 export type SortingOperatorRoleDto = SortingParamsDto<{
   name?:Sorting,
