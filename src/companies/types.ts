@@ -13,7 +13,7 @@ export type Company = {
   taxCode: string|null;
   billingAddressId: number|null;
   savedPaymentId: number|null;
-  customerId: number|null;
+  customerId: number;
   published: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -21,7 +21,7 @@ export type Company = {
 
 type PartialCompany = Partial<Omit<Company,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'> & {
+export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'|'customerId'> & {
   addresses?:CreateCompanyAddress[],
   payments?:CreatePaymentMethod[]
 }
