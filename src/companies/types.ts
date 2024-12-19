@@ -12,7 +12,7 @@ export type Company = {
   email: string|null;
   taxCode: string|null;
   billingAddressId: number|null;
-  savedPaymentId: number|null;
+  paymentMethodId: number|null;
   customerId: number;
   published: boolean;
   createdAt: Date;
