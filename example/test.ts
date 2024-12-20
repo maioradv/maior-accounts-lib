@@ -1,4 +1,4 @@
-import { accountsApiClient, ApiVersion, RecurringInterval } from "../src";
+import { accountsApiClient, ApiVersion } from "../src";
 import credentials from './credentials.json'
 
 async function example() {

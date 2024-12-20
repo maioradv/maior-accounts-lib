@@ -76,5 +76,29 @@ export type PaymentMethod = {
 
 type PartialPaymentMethod = Partial<Omit<PaymentMethod,'id'|'createdAt'|'updatedAt'|'companyId'>>
 
-export type CreatePaymentMethod = PartialPaymentMethod & WithRequired<PartialPaymentMethod,'name'|'type'>
-export type UpdatePaymentMethod = Omit<CreatePaymentMethod,'name'|'type'>
+export type UpdatePaymentMethod = Omit<PartialPaymentMethod,'expireAt'|'type'>
+
+export enum PaymentMethodType {
+  card = 'card',
+  sepaDebit = 'sepa_debit'
+}
+
+export type CreateCardPaymentMethod = {
+  type:'card',
+  card:{
+    number:string,
+    exp_month:number,
+    exp_year:number,
+    cvc:string
+  }
+}
+export type CreateSepaDebitPaymentMethod = {
+  type:'sepa_debit',
+  sepaDebit:{
+    iban:string
+  }
+}
+
+export type CreatePaymentMethod = (CreateCardPaymentMethod | CreateSepaDebitPaymentMethod) & {
+  setDefault?:boolean
+}
