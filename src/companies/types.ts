@@ -23,7 +23,7 @@ type PartialCompany = Partial<Omit<Company,'id'|'createdAt'|'updatedAt'>>
 
 export type CreateCompany = PartialCompany & WithRequired<PartialCompany,'name'|'vatNumber'|'customerId'> & {
   addresses?:CreateCompanyAddress[],
-  payments?:CreatePaymentMethod[]
+  //payments?:CreatePaymentMethod[]
 }
 export type UpdateCompany = PartialCompany
 
