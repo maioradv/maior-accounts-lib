@@ -39,6 +39,10 @@ export default class Me extends ApiModule {
     return this._call<Customer>('delete',`/me`)
   }
 
+  findProfile() {
+    return this._call<CustomerProfile>('get',`/me/profile`)
+  }
+
   updateProfile(data:UpdateOwnProfile) {
     return this._call<CustomerProfile>('patch',`/me/profile`,data)
   }

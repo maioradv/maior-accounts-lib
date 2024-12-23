@@ -3,7 +3,7 @@ import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { QueryCustomerGQLDto, customersResolvers } from "./graphql";
-import { Customer, CreateCustomer, UpdateCustomer, QueryCustomerDto, RegisterCustomer } from "./types";
+import { Customer, CreateCustomer, UpdateCustomer, QueryCustomerDto, RegisterCustomer, CustomerProfile, UpdateCustomerProfile } from "./types";
 
 export default class Customers extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(data:CreateCustomer): Promise<Customer> {
@@ -24,6 +24,14 @@ export default class Customers extends ApiModule implements RestApiModuleI, Grap
 
   remove(id:number): Promise<Customer> {
     return this._call<Customer>('delete',`/customers/${id}`)
+  }
+
+  findProfile(id:number) {
+    return this._call<CustomerProfile>('get',`/customers/${id}/profile`)
+  }
+
+  updateProfile(id:number,data:UpdateCustomerProfile) {
+    return this._call<CustomerProfile>('patch',`/customers/${id}/profile`,data)
   }
 
   register(data:RegisterCustomer) {
