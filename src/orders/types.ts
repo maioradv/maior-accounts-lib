@@ -7,10 +7,17 @@ import { Service } from "../services/types";
 import { Translation, WithRequired } from "../types";
 
 export enum OrderStatus {
-  preorder = 'preorder',
   created = 'created',
   completed = 'completed',
   canceled = 'canceled'
+}
+
+export enum OrderType {
+  preorder = 'preorder',
+  oneTime = 'oneTime',
+  subscription = 'subscription',
+  upgrade = 'upgrade',
+  downgrade = 'downgrade',
 }
 
 export enum OrderAdjustmentType {
@@ -24,6 +31,7 @@ export enum OrderAdjustmentType {
 export type Order = {
   id: number;
   status:OrderStatus;
+  type:OrderType;
   totalAmount:number;
   taxRateId:number,
   currency:string;
@@ -69,8 +77,8 @@ export type OrderAdjustment = {
 
 type PartialOrder = Partial<Omit<Order,'id'|'createdAt'|'updatedAt'>>
 
-export type CreateOrder = PartialOrder & WithRequired<PartialOrder,'purchaseMethodId'|'totalAmount'|'taxRateId'>
-export type UpdateOrder = Omit<PartialOrder,'totalAmount'|'taxRateId'|'currency'|'purchaseMethodId'>
+export type CreateOrder = PartialOrder & WithRequired<PartialOrder,'purchaseMethodId'|'totalAmount'|'taxRateId'|'type'>
+export type UpdateOrder = Omit<PartialOrder,'totalAmount'|'taxRateId'|'currency'|'purchaseMethodId'|'type'>
 
 export type FindOneOrderDto = Order & {
   Company:Company,
@@ -93,7 +101,8 @@ export type ClausesOrderDto = WhereClausesDto<{
   purchaseMethodId?:NumberClause,
   companyId?:NumberClause,
   customerId?:NumberClause,
-  status?:EnumClause<OrderStatus>
+  status?:EnumClause<OrderStatus>,
+  type?:EnumClause<OrderType>
 }>
 
 export type QueryOrderDto = QueryParamsDto<SortingOrderDto,ClausesOrderDto>
