@@ -1,7 +1,7 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule } from "../model";
-import { Service, CreateService, UpdateService, QueryServiceDto } from "./types";
+import { Service, CreateService, UpdateService, QueryServiceDto, FindOneService } from "./types";
 
 export default class Services extends ApiModule implements RestApiModuleI {
   create(data:CreateService) {
@@ -13,7 +13,7 @@ export default class Services extends ApiModule implements RestApiModuleI {
   } 
 
   findOne(id:number) {
-    return this._call<Service>('get',`/services/${id}`)
+    return this._call<FindOneService>('get',`/services/${id}`)
   }
 
   update(id:number,data:UpdateService) {

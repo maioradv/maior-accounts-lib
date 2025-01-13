@@ -30,7 +30,8 @@ export type SortingOperatorDto = SortingParamsDto<{
 export type ClausesOperatorDto = WhereClausesDto<{
   email?:StringClause,
   active?:BooleanClause,
-  operatorRoleId?:NumberClause
+  operatorRoleId?:NumberClause,
+  search?:StringClause
 }>
 
 export type QueryOperatorDto = QueryParamsDto<SortingOperatorDto,ClausesOperatorDto>
@@ -61,6 +62,7 @@ export type SortingOperatorRoleDto = SortingParamsDto<{
 export type ClausesOperatorRoleDto = WhereClausesDto<{
   name?:StringClause,
   description?:StringClause,
+  search?:StringClause
 }>
 
 export type QueryOperatorRoleDto = QueryParamsDto<SortingOperatorRoleDto,ClausesOperatorRoleDto>

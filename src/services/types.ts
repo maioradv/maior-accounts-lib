@@ -1,3 +1,4 @@
+import { ActivityLog } from "../activitylogs/types";
 import { BooleanClause, DateClause, EnumClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
@@ -36,6 +37,10 @@ type PartialService = Partial<Omit<Service,'id'|'createdAt'|'updatedAt'|'status'
 
 export type CreateService = PartialService & WithRequired<PartialService,'description'|'price'|'productId'|'orderId'|'gateway'>
 export type UpdateService = Omit<PartialService,'startAt'|'quantity'|'productId'|'orderId'|'gateway'>
+
+export type FindOneService = Service & {
+  ActivityLog:ActivityLog[]
+}
 
 export type SortingServiceDto = SortingParamsDto<{
   published?:Sorting,

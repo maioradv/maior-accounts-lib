@@ -1,7 +1,7 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule } from "../model";
-import { ScheduledPayment, CreateScheduledPayment, UpdateScheduledPayment, QueryScheduledPaymentDto } from "./types";
+import { ScheduledPayment, CreateScheduledPayment, UpdateScheduledPayment, QueryScheduledPaymentDto, FindOneScheduledPayment } from "./types";
 
 export default class ScheduledPayments extends ApiModule implements RestApiModuleI {
   create(data:CreateScheduledPayment) {
@@ -13,7 +13,7 @@ export default class ScheduledPayments extends ApiModule implements RestApiModul
   } 
 
   findOne(id:number) {
-    return this._call<ScheduledPayment>('get',`/scheduled-payments/${id}`)
+    return this._call<FindOneScheduledPayment>('get',`/scheduled-payments/${id}`)
   }
 
   update(id:number,data:UpdateScheduledPayment) {

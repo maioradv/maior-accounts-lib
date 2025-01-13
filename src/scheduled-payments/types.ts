@@ -1,3 +1,4 @@
+import { ActivityLog } from "../activitylogs/types";
 import { BooleanClause, DateClause, EnumClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
@@ -7,7 +8,7 @@ export enum PaymentStatus {
   pending = 'pending',
   partiallyPaid = 'partiallyPaid',
   paid = 'paid',
-  postdue = 'postdue',
+  pastdue = 'pastdue',
   overdue = 'overdue',
   partiallyRefunded = 'partiallyRefunded',
   refunded = 'refunded',
@@ -42,6 +43,10 @@ type PartialScheduledPayment = Partial<Omit<ScheduledPayment,'id'|'createdAt'|'u
 
 export type CreateScheduledPayment = PartialScheduledPayment & WithRequired<PartialScheduledPayment,'description'|'date'|'serviceId'>
 export type UpdateScheduledPayment = PartialScheduledPayment
+
+export type FindOneScheduledPayment = ScheduledPayment & {
+  ActivityLog:ActivityLog[]
+}
 
 export type SortingScheduledPaymentDto = SortingParamsDto<{
   date?:Sorting,

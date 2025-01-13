@@ -30,6 +30,7 @@ export enum OrderAdjustmentType {
 
 export type Order = {
   id: number;
+  request:Record<string,any>|null,
   status:OrderStatus;
   type:OrderType;
   totalAmount:number;
@@ -45,6 +46,7 @@ export type Order = {
 
 export type OrderItem = {
   id: number;
+  description: string;
   amount: number;
   quantity: number;
   orderId: number; 

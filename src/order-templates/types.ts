@@ -54,13 +54,13 @@ export type FindOneOrderTemplate = OrderTemplate & {
 }
 
 
-type PartialServiceTemplate = Partial<Omit<ServiceTemplate,'id'|'createdAt'|'updatedAt'>>
+type PartialServiceTemplate = Partial<Omit<ServiceTemplate,'id'|'createdAt'|'updatedAt'|'orderTemplateId'>>
 
-export type CreateServiceTemplate = PartialServiceTemplate & WithRequired<PartialServiceTemplate,'productId'|'orderTemplateId'>
+export type CreateServiceTemplate = PartialServiceTemplate & WithRequired<PartialServiceTemplate,'productId'>
 export type UpdateServiceTemplate = PartialServiceTemplate
 
 
-type PartialOrderItemTemplate = Partial<Omit<OrderItemTemplate,'id'|'createdAt'|'updatedAt'>>
+type PartialOrderItemTemplate = Partial<Omit<OrderItemTemplate,'id'|'createdAt'|'updatedAt'|'orderTemplateId'>>
 
-export type CreateOrderItemTemplate = PartialOrderItemTemplate & WithRequired<PartialOrderItemTemplate,'productId'|'orderTemplateId'>
+export type CreateOrderItemTemplate = PartialOrderItemTemplate & WithRequired<PartialOrderItemTemplate,'productId'>
 export type UpdateOrderItemTemplate = PartialOrderItemTemplate
