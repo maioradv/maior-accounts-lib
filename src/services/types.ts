@@ -12,7 +12,6 @@ export enum ServiceStatus {
   suspended = 'suspended',
   expired = 'expired',
   canceled = 'canceled',
-  completed = 'completed',
 }
 
 export type Service = {

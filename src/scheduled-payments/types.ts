@@ -39,7 +39,7 @@ export type ScheduledPayment = {
   updatedAt: Date;
 }
 
-type PartialScheduledPayment = Partial<Omit<ScheduledPayment,'id'|'createdAt'|'updatedAt'|'status'|'invoiceStatus'>>
+type PartialScheduledPayment = Partial<Omit<ScheduledPayment,'id'|'createdAt'|'updatedAt'>>
 
 export type CreateScheduledPayment = PartialScheduledPayment & WithRequired<PartialScheduledPayment,'description'|'date'|'serviceId'>
 export type UpdateScheduledPayment = PartialScheduledPayment

@@ -7,6 +7,7 @@ export type Plan = {
   id: number;
   name: string;
   description: string|null;
+  tier: number;
   slug: string;
   dashboardTypeId: number;
   orderTemplateId: number|null;
@@ -19,11 +20,12 @@ export type Plan = {
 
 type PartialPlan = Partial<Omit<Plan,'id'|'createdAt'|'updatedAt'>>
 
-export type CreatePlan = PartialPlan & WithRequired<PartialPlan,'name'|'slug'|'dashboardTypeId'>
+export type CreatePlan = PartialPlan & WithRequired<PartialPlan,'name'|'slug'|'dashboardTypeId'|'tier'>
 export type UpdatePlan = PartialPlan
 
 export type SortingPlanDto = SortingParamsDto<{
   name?:Sorting,
+  tier?:Sorting
 }>
 
 export type ClausesPlanDto = WhereClausesDto<{

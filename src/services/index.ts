@@ -20,6 +20,10 @@ export default class Services extends ApiModule implements RestApiModuleI {
     return this._call<Service>('patch',`/services/${id}`,data)
   }
 
+  cancel(id:number) {
+    return this._call<Service>('post',`/services/${id}/cancel`)
+  }
+
   remove(id:number) {
     return this._call<Service>('delete',`/services/${id}`)
   }

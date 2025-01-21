@@ -10,6 +10,18 @@ async function example() {
   await api.auth()
   //api.authentication.me().then(v => console.log(v))
   //await api.me.dashboardAccesses.findAll().then(v => console.log(v))
+  api.orders.create({
+    customerId:3,
+    purchaseMethodId:1,
+    companyId:1,
+    request:{
+      type:'CreateDashboard',
+      dashboard:{
+        name:'tesone',
+        planId:1
+      }
+    },
+  })
 }
 
 example()

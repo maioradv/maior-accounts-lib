@@ -13,7 +13,6 @@ export type PurchaseMethod = {
   name: string; 
   type: PurchaseMethodType; 
   description: string|null;
-  offline: boolean;
   position: number|null;
   active: boolean; 
   published: boolean; 
