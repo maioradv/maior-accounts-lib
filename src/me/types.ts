@@ -2,6 +2,7 @@ import { CreateCompany, CreateCompanyAddress, CreatePaymentMethod, QueryCompanyD
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { UpdateCustomer, UpdateCustomerProfile } from "../customers/types";
 import { ClausesDashboardAccessDto, CreateDashboardAccess, Dashboard, DashboardAccess, SortingDashboardAccessDto } from "../dashboards/types";
+import { FindOneOrderDto, OrderRequest, QueryOrderDto } from "../orders/types";
 
 export type UpdateOwnCustomer = Omit<UpdateCustomer,'active'|'email'|'dashboards'>
 export type UpdateOwnProfile = UpdateCustomerProfile
@@ -20,3 +21,11 @@ export type QueryOwnDashboardAccessDto =  QueryParamsDto<Omit<SortingDashboardAc
 export type FindAllOwnDashboardAccess = DashboardAccess & {
   Dashboard:Dashboard
 }
+
+export type FindOneOwnOrderDto = Omit<FindOneOrderDto,'OrderAdjustment'>
+export type CreateOwnOrder = {
+  request:OrderRequest,
+  companyId:number,
+  purchaseMethodId:number
+}
+export type QueryOwnOrderDto = QueryOrderDto
