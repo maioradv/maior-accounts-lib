@@ -44,6 +44,7 @@ export type SortingCustomerDto = SortingParamsDto<{
 export type ClausesCustomerDto = WhereClausesDto<{
   email?:StringClause,
   active?:BooleanClause,
+  search?:StringClause,
 }>
 
 export type QueryCustomerDto = QueryParamsDto<SortingCustomerDto,ClausesCustomerDto>

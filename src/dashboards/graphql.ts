@@ -5,8 +5,8 @@ export const dashboardsResolvers:Resolvers<['dashboards'],['removeDashboards']> 
   query:{
     dashboards:{
       name:'dashboards',
-      query: `query DashboardList($limit: Int, $after: Int, $before: Int){
-        dashboards(limit: $limit, after: $after, before: $before){
+      query: `query DashboardList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        dashboards(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id

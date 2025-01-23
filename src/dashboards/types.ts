@@ -55,7 +55,8 @@ export type ClausesDashboardDto = WhereClausesDto<{
   name?:StringClause,
   domain?:StringClause,
   plan?:StringClause,
-  status?:EnumClause<DashboardStatus>
+  status?:EnumClause<DashboardStatus>,
+  search?:StringClause,
 }>
 
 export type QueryDashboardDto = QueryParamsDto<SortingDashboardDto,ClausesDashboardDto>

@@ -1,6 +1,8 @@
-import { PaginatedDto } from "../core/dto/pagination";
+import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
+import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule } from "../model";
+import { activityLogsResolvers, QueryActivityLogGQLDto } from "./graphql";
 import { ActivityLog, CreateActivityLog, UpdateActivityLog, QueryActivityLogDto } from "./types";
 
 export default class ActivityLogs extends ApiModule implements RestApiModuleI {
@@ -22,5 +24,15 @@ export default class ActivityLogs extends ApiModule implements RestApiModuleI {
 
   remove(id:number) {
     return this._call<ActivityLog>('delete',`/activity-logs/${id}`)
+  }
+
+  list(args:QueryActivityLogGQLDto = {}) {
+    return this._graphql<PaginatedGQL<ActivityLog>>(activityLogsResolvers.query.activityLogs,args)
+  }
+
+  removeMany(id:number|number[]) {
+    return this._graphql<RemoveGQL>(activityLogsResolvers.mutation.removeActivityLogs,{
+      id
+    })
   }
 }
