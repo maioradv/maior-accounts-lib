@@ -105,6 +105,7 @@ export type CreateOrder = {
   request?:OrderRequest,
   customerId:number,
   companyId?:number,
+  taxRateId?:number,
   purchaseMethodId:number,
   items?:CreateOrderItem[],
   services?:CreateOrderService[],

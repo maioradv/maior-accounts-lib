@@ -6,6 +6,7 @@ export type AccountsApiConfigs = ApiConfigs
 
 export * from './types'
 export * from './error'
+export * from './utils'
 
 export * from './activitylogs/types'
 export * from './apitokens/types'
