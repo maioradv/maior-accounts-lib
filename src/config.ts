@@ -1,3 +1,4 @@
+import { AxiosInstance } from "axios"
 import { SignInDto } from "./auth/types"
 import { ConfigError } from "./error"
 import { ApiVersion, LATEST_API_VERSION, SUPPORTED_API_VERSIONS, WithRequired } from "./types"
@@ -10,6 +11,7 @@ export type ApiConfigs = {
   },
   version?:ApiVersion,
   sandbox?:boolean,
+  axios?:(axios:AxiosInstance) => AxiosInstance
 }
 
 export type ValidatedApiConfigs = ApiConfigs & WithRequired<ApiConfigs,'version'|'sandbox'>
