@@ -1,3 +1,4 @@
+import { CustomerSession } from "../customers/types";
 import { ApiModule } from "../model";
 import { AccessTokenDto, SignInDto } from "./types";
 
@@ -16,5 +17,9 @@ export class AuthCustomer extends ApiModule {
 
   code({email,code}:{email:string,code:number}): Promise<AccessTokenDto> {
     return this._call<AccessTokenDto>('post',`/auth/code`,{email,code})
+  }
+
+  sessions() {
+    return this._call<CustomerSession[]>('get',`/auth/sessions`)
   }
 }

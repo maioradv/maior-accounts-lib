@@ -21,6 +21,17 @@ export type CustomerProfile = {
   updatedAt: Date;
 }
 
+export type CustomerSession = {
+  id: number;
+  refreshToken: string;
+  expireAt: Date;
+  ip: string|null;
+  userAgent: string|null;
+  customerId: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 type PartialCustomer = Partial<Omit<Customer,'id'|'createdAt'|'updatedAt'>>
 type PartialCustomerProfile = Partial<Omit<CustomerProfile,'id'|'createdAt'|'updatedAt'>>
 
