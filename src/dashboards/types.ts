@@ -31,6 +31,7 @@ export type DashboardType = {
   slug: string;
   name: string;
   domain: string;
+  api: string;
   createdAt: Date;
   updatedAt: Date;
 }
