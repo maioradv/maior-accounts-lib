@@ -72,10 +72,8 @@ export type DashboardAccess = {
   updatedAt: Date;
 }
 
-export type CreateDashboardAccess = Omit<DashboardAccess,'id'|'createdAt'|'updatedAt'> & {
-  notify?: boolean
-}
-export type UpdateDashboardAccess = Partial<Omit<CreateDashboardAccess,'notify'>>
+export type CreateDashboardAccess = Omit<DashboardAccess,'id'|'createdAt'|'updatedAt'>
+export type UpdateDashboardAccess = Partial<CreateDashboardAccess>
 
 export type SortingDashboardAccessDto = SortingParamsDto<{
   customerId?:Sorting,
