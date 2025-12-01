@@ -68,6 +68,7 @@ export type DashboardAccess = {
   customerId: number;
   dashboardId: number;
   roleId: number;
+  active: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
