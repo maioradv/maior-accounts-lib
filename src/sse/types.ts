@@ -1,5 +1,11 @@
 export type ServerSentEvents = {
+  dashboardCreated: ServerSentEventPayload<{
+    id: number;
+  }>;
   dashboardUpdated: ServerSentEventPayload<{
+    id: number;
+  }>;
+  dashboardRemoved: ServerSentEventPayload<{
     id: number;
   }>;
 }
