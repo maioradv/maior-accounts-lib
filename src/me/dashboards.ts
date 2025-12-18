@@ -1,5 +1,4 @@
 import { PaginatedDto } from "../core/dto/pagination";
-import { SlugCheck, SlugCheckResponse } from "../core/dto/slugger";
 import { queryParams } from "../core/utils/queryParams";
 import { Dashboard, DashboardAccess, QueryDashboardDto, UpdateDashboardPlan } from "../dashboards/types";
 import { ApiModule } from "../model";
@@ -30,8 +29,8 @@ export default class Dashboards extends ApiModule {
     return this._call<DashboardAccess>('get',`/me/dashboards/${id}/own-access`)
   }
 
-  slugCheck(data:SlugCheck) {
-    return this._call<SlugCheckResponse>('post','/me/dashboards/slug',data)
+  ownAccessBySlug(slug:string) {
+    return this._call<DashboardAccess>('get',`/me/dashboards/${slug}/own-access-slug`)
   }
 
   updatePlan(id:number,data:UpdateDashboardPlan) {
