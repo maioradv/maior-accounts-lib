@@ -5,7 +5,6 @@ export type ApiToken = {
   name: string;
   uuid: string;
   permissions: Permission[];
-  dashboardId: number|null;
   createdAt: Date;
   updatedAt: Date;
 }
