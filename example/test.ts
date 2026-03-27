@@ -15,6 +15,11 @@ async function example() {
     sorting:'desc',
     after:171
   }).then(v => console.log(v))
+  api.me.dashboardAccesses.findAll({
+    where:{
+      dashboardTypeSlug:''
+    }
+  })
 }
 
 example()

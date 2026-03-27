@@ -86,6 +86,7 @@ export type ClausesDashboardAccessDto = WhereClausesDto<{
   customerId?:NumberClause,
   dashboardId?:NumberClause,
   roleId?:NumberClause,
+  dashboardTypeSlug?:StringClause
 }>
 
 export type QueryDashboardAccessDto = QueryParamsDto<SortingDashboardAccessDto,ClausesDashboardAccessDto>
