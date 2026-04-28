@@ -4,9 +4,9 @@ import { ApiConfigs } from "./config";
 export { AccountsApiClient }
 export type AccountsApiConfigs = ApiConfigs
 
-export * from './types'
-export * from './error'
+export * from './api'
 export * from './utils'
+export * from './sse'
 
 export * from './activitylogs/types'
 export * from './apitokens/types'
@@ -26,7 +26,6 @@ export * from './products/types'
 export * from './scheduled-payments/types'
 export * from './services/types'
 export * from './taxRates/types'
-export * from './sse/types'
 
 export function accountsApiClient(opt:AccountsApiConfigs): AccountsApiClient {
   return new AccountsApiClient(opt)

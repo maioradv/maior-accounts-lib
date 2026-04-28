@@ -1,5 +1,5 @@
 import { CreateCompany, CreateCompanyAddress, CreatePaymentMethod, QueryCompanyDto, UpdatePaymentMethod } from "../companies/types";
-import { QueryParamsDto } from "../core/utils/queryParams";
+import { QueryParamsDto } from "@maioradv/client-core";
 import { UpdateCustomer, UpdateCustomerProfile } from "../customers/types";
 import { ClausesDashboardAccessDto, CreateDashboardAccess, Dashboard, DashboardAccess, SortingDashboardAccessDto } from "../dashboards/types";
 import { FindOneOrderDto, OrderRequest, QueryOrderDto } from "../orders/types";

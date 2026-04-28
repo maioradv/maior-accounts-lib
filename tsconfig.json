@@ -4,6 +4,7 @@
     "target": "ES2021",
     "declaration": true,
     "outDir": "./dist",
+    "rootDir": "./src",
     "strict": false,
     "removeComments": false,
     "resolveJsonModule": true,

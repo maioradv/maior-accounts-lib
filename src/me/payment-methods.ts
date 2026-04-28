@@ -1,5 +1,5 @@
 import { PaymentMethod } from "../companies/types";
-import { ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { UpdateOwnPaymentMethod } from "./types";
 
 export default class PaymentMethods extends ApiModule {

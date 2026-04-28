@@ -1,9 +1,7 @@
 import { ActivityLog } from "../activitylogs/types";
-import { BooleanClause, DateClause, EnumClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
+import { QueryParamsDto, Sorting, SortingParamsDto, BooleanClause, StringClause, WhereClausesDto, NumberClause, DateClause, EnumClause } from "@maioradv/client-core";
+import { Translation, WithRequired } from "@maioradv/types";
 import { PurchaseMethodType } from "../purchase-methods/types";
-import { Translation, WithRequired } from "../types";
 
 export enum ServiceStatus {
   pending = 'pending',

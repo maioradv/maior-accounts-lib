@@ -1,5 +1,5 @@
-import { Axios } from "axios";
-import { ApiModule } from "../model";
+import { AxiosInstance } from "axios";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import Companies from "./companies";
 import { Customer, CustomerProfile } from "../customers/types";
 import { UpdateOwnCustomer, UpdateOwnProfile } from "./types";
@@ -21,7 +21,7 @@ export default class Me extends ApiModule {
   readonly orders:Orders;
   readonly services:Services;
 
-  constructor(client:Axios){
+  constructor(client:AxiosInstance){
     super(client)
     this.companies = new Companies(client)
     this.companyAddresses = new CompanyAddresses(client)

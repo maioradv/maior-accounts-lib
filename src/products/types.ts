@@ -1,7 +1,5 @@
-import { BooleanClause, EnumClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
-import { Translation, WithRequired } from "../types";
+import { QueryParamsDto, Sorting, SortingParamsDto, BooleanClause, StringClause, WhereClausesDto, EnumClause } from "@maioradv/client-core";
+import { Translation, WithRequired } from "@maioradv/types";
 
 export enum RecurringInterval {
   none = 'none',

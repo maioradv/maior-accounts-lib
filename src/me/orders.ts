@@ -1,8 +1,6 @@
 import { Contract, QueryContractDto } from "../contracts/types";
-import { PaginatedDto } from "../core/dto/pagination";
-import { queryParams } from "../core/utils/queryParams";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { Invoice, QueryInvoiceDto } from "../invoices/types";
-import { ApiModule } from "../model";
 import { CreateOrderResponse, Order, OrderItem } from "../orders/types";
 import { CreateOwnOrder, FindOneOwnOrderDto, QueryOwnOrderDto } from "./types";
 

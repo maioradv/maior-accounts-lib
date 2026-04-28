@@ -1,11 +1,9 @@
 import { ActivityLog } from "../activitylogs/types";
 import { Company } from "../companies/types";
-import { BooleanClause, EnumClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
+import { QueryParamsDto, Sorting, SortingParamsDto, BooleanClause, StringClause, WhereClausesDto, NumberClause, EnumClause } from "@maioradv/client-core";
+import { Metafield, Translation, WithRequired } from "@maioradv/types";
 import { CreateDashboard } from "../dashboards/types";
 import { CreateService, Service } from "../services/types";
-import { Metafield, Translation, WithRequired } from "../types";
 
 export enum OrderStatus {
   created = 'created',

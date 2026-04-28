@@ -1,7 +1,5 @@
-import { BooleanClause, EnumClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
-import { WithRequired } from "../types";
+import { QueryParamsDto, Sorting, SortingParamsDto, BooleanClause, StringClause, WhereClausesDto, EnumClause, NumberClause } from "@maioradv/client-core";
+import { WithRequired } from "@maioradv/types";
 
 export type Dashboard = {
   id: number;
@@ -104,3 +102,12 @@ export type ClausesDashboardTypeDto = WhereClausesDto<{
 }>
 
 export type QueryDashboardTypeDto = QueryParamsDto<SortingDashboardTypeDto,ClausesDashboardTypeDto>
+
+export type SlugCheck = {
+  input:string;
+}
+export type SlugCheckResponse = {
+  input:string;
+  output:string;
+  available:boolean;
+}

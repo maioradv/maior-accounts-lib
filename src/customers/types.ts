@@ -1,8 +1,6 @@
-import { BooleanClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateDashboardAccess } from "../dashboards/types";
-import { WithRequired } from "../types";
+import { QueryParamsDto, Sorting, SortingParamsDto, BooleanClause, StringClause, WhereClausesDto } from "@maioradv/client-core";
+import { WithRequired } from "@maioradv/types";
 
 export type Customer = {
   id: number;

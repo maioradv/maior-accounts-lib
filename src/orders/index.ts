@@ -1,6 +1,4 @@
-import { PaginatedDto } from "../core/dto/pagination";
-import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { Order, CreateOrder, UpdateOrder, QueryOrderDto, OrderItem, CreateOrderItem, FindOneOrderDto, CreateOrderResponse } from "./types";
 
 export default class Orders extends ApiModule implements RestApiModuleI {

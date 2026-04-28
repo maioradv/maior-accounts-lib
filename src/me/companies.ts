@@ -1,7 +1,5 @@
 import { Company, CompanyAddress, PaymentMethod } from "../companies/types";
-import { PaginatedDto } from "../core/dto/pagination";
-import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { CreateOwnCompany, UpdateOwnCompany, QueryOwnCompanyDto, CreateOwnCompanyAddress, CreateOwnPaymentMethod } from "./types";
 
 export default class Companies extends ApiModule implements RestApiModuleI {

@@ -1,18 +1,14 @@
 import { ApiToken } from "../apitokens/types";
 import { Customer } from "../customers/types";
 import { Operator } from "../operators/types";
+import Maior from "@maioradv/types";
 
 export type SignInDto = {
   email:string;
   password:string;
 }
 
-export type AccessTokenDto = {
-  access_token:string;
-  token_type:string;
-  expires_in:number;
-  refresh_token?:string;
-}
+export type AccessTokenDto = Maior.AccessTokenDto
 
 export enum JwtContextType {
   customer = 'Customer',
@@ -26,15 +22,7 @@ export type JwtPayloadContext = {
   name:string;
 }
 
-export type JwtPayload = {
-  sub: string;
-  aud: string[];
-  scope: string[];
-  iat: number;
-  exp: number;
-  iss: string;
-  context: JwtPayloadContext;
-}
+export type JwtPayload = Maior.JwtPayload<JwtPayloadContext>
 
 export type JwtContext = {
   Customer?:Customer;

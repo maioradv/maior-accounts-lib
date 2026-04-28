@@ -1,10 +1,6 @@
-import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
-import { SlugCheck, SlugCheckResponse } from "../core/dto/slugger";
-import { RemoveGQL } from "../core/model/remove-gql.response";
-import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL, GraphApiModuleI  } from "@maioradv/client-core";
 import { QueryDashboardGQLDto, dashboardsResolvers } from "./graphql";
-import { Dashboard, CreateDashboard, UpdateDashboard, QueryDashboardDto, UpdateDashboardPlan } from "./types";
+import { Dashboard, CreateDashboard, UpdateDashboard, QueryDashboardDto, UpdateDashboardPlan, SlugCheck, SlugCheckResponse } from "./types";
 
 export default class Dashboards extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(data:CreateDashboard): Promise<Dashboard> {

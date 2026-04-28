@@ -1,13 +1,11 @@
-import axios, { Axios } from "axios";
+import axios, { AxiosInstance } from "axios";
 import { ValidatedApiConfigs, ApiConfigs, validateConfigs } from "./config";
-import { ApiHeader } from "./types";
-import { ClientApiI } from "./model";
+import { ApiHeader } from "./api";
 import Auth from "./auth";
 import Customers from "./customers";
 import { AccessTokenDto } from "./auth/types";
 import Dashboards from "./dashboards";
 import DashboardAccesses from "./dashboards/accesses";
-import { AuthError } from "./error";
 import Operators from "./operators"
 import OperatorRoles from "./operators/roles";
 import Companies from "./companies";
@@ -29,12 +27,14 @@ import Me from "./me";
 import ServiceTemplates from "./order-templates/service-templates";
 import OrderItemTemplates from "./order-templates/item-templates";
 import TaxRates from "./taxRates";
+import { AuthError } from "@maioradv/client-core";
+import { SseHandler } from "./sse";
 
-export class AccountsApiClient implements ClientApiI
+export class AccountsApiClient
 {
   protected SANDBOX_URL = 'http://localhost:3001'
   protected PRODUCTION_URL = 'https://api.accounts.maior.cloud'
-  protected client:Axios;
+  protected client:AxiosInstance;
   protected configApi:ValidatedApiConfigs;
   authentication:Auth;
   customers:Customers;
@@ -60,7 +60,11 @@ export class AccountsApiClient implements ClientApiI
   orders:Orders;
   orderItems:OrderItems;
   taxRates:TaxRates;
+  /**
+   * @requires Customer - Context Type
+   */
   me:Me;
+  sse:SseHandler;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -68,7 +72,7 @@ export class AccountsApiClient implements ClientApiI
     this._initModules()
   }
 
-  protected _initClient(): Axios {
+  protected _initClient(): AxiosInstance {
     const client = axios.create()
     client.defaults.baseURL = this.configApi.sandbox ? this.SANDBOX_URL : this.PRODUCTION_URL;
     client.defaults.headers.common[ApiHeader.ApiVersion] = this.configApi.version
@@ -78,6 +82,7 @@ export class AccountsApiClient implements ClientApiI
 
   protected _initModules() {
     this.authentication = new Auth(this.client)
+    this.sse = new SseHandler(this.client)
     this.customers = new Customers(this.client)
     this.dashboards = new Dashboards(this.client)
     this.dashboardAccesses = new DashboardAccesses(this.client)
@@ -106,6 +111,11 @@ export class AccountsApiClient implements ClientApiI
 
   _setAccessToken(accessToken:string) {
     this.client.defaults.headers.common[ApiHeader.Authorization] = `Bearer ${accessToken}`
+    this._initSse()
+  }
+
+  _initSse() {
+    this.sse.connect()
   }
 
   async auth(): Promise<AccessTokenDto> {
@@ -114,7 +124,7 @@ export class AccountsApiClient implements ClientApiI
       this.configApi.credentials.apiToken ? await this.authentication.apitoken.token(this.configApi.credentials.apiToken) : 
       this.configApi.credentials.operator ? await this.authentication.operator.signIn(this.configApi.credentials.operator) :
       await this.authentication.customer.signIn(this.configApi.credentials.customer)
-    this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
+    this._setAccessToken(access.access_token)
     return access
   }
 
@@ -122,13 +132,13 @@ export class AccountsApiClient implements ClientApiI
     const access = 
       context == 'operator' ? await this.authentication.operator.refresh(refreshToken) : 
       await this.authentication.customer.refresh(refreshToken)
-    this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
+    this._setAccessToken(access.access_token)
     return access
   }
 
   async authRecover(email:string,code:number): Promise<AccessTokenDto> {
     const access = await this.authentication.customer.code({email,code})
-    this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
+    this._setAccessToken(access.access_token)
     return access
   }
 }

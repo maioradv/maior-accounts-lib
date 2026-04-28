@@ -1,6 +1,4 @@
-import { PaginatedDto } from "../core/dto/pagination";
-import { queryParams } from "../core/utils/queryParams";
-import { ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { QueryScheduledPaymentDto, ScheduledPayment } from "../scheduled-payments/types";
 
 export default class ScheduledPayments extends ApiModule {

@@ -1,8 +1,6 @@
 import { Permission } from "../auth/types";
-import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
-import { Translation, WithRequired } from "../types";
+import { QueryParamsDto, Sorting, SortingParamsDto, BooleanClause, StringClause, WhereClausesDto, NumberClause } from "@maioradv/client-core";
+import { Translation, WithRequired } from "@maioradv/types";
 
 export type Operator = {
   id: number;

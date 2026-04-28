@@ -1,5 +1,5 @@
-import { Axios } from "axios";
-import { ApiModule } from "../model";
+import { AxiosInstance } from "axios";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { Jwt } from "./types";
 import AuthApiToken from "./apitoken";
 import { AuthCustomer } from "./customer";
@@ -10,7 +10,7 @@ export default class Auth extends ApiModule {
   readonly customer:AuthCustomer;
   readonly operator:AuthOperator;
 
-  constructor(client:Axios){
+  constructor(client:AxiosInstance){
     super(client)
     this.apitoken = new AuthApiToken(client)
     this.customer = new AuthCustomer(client)

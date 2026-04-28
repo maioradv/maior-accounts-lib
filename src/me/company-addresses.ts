@@ -1,5 +1,5 @@
 import { CompanyAddress } from "../companies/types";
-import { ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { UpdateOwnCompanyAddress } from "./types";
 
 export default class CompanyAddresses extends ApiModule {

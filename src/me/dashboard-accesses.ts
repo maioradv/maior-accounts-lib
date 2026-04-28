@@ -1,7 +1,5 @@
-import { PaginatedDto } from "../core/dto/pagination";
-import { queryParams } from "../core/utils/queryParams";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { DashboardAccess } from "../dashboards/types";
-import { ApiModule } from "../model";
 import { QueryOwnDashboardAccessDto, UpdateOwnDashboardAccess, FindAllOwnDashboardAccess } from "./types";
 
 export default class DashboardAccesses extends ApiModule {

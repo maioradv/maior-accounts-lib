@@ -1,6 +1,4 @@
-import { PaginatedDto } from "../core/dto/pagination";
-import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL  } from "@maioradv/client-core";
 import { Plan, CreatePlan, UpdatePlan, QueryPlanDto, FindAllPlanDto, FindOnePlanDto } from "./types";
 
 export default class Plans extends ApiModule implements RestApiModuleI {
