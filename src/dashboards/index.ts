@@ -30,6 +30,14 @@ export default class Dashboards extends ApiModule implements RestApiModuleI, Gra
   remove(id:number): Promise<Dashboard> {
     return this._call<Dashboard>('delete',`/dashboards/${id}`)
   }
+
+  syncPlan() {
+    return this._call<void>('post','/dashboards/sync/plan')
+  }
+
+  syncPermissions() {
+    return this._call<void>('post','/dashboards/sync/permissions')
+  }
   
   list(args:QueryDashboardGQLDto = {}): Promise<PaginatedGQL<Dashboard>> {
     return this._graphql<PaginatedGQL<Dashboard>>(dashboardsResolvers.query.dashboards,args)
