@@ -9,6 +9,7 @@ export type Dashboard = {
   domain: string;
   api: string;
   plan: string;
+  dbsId: number|null;
   masterToken: string|null;
   dashboardTypeId: number;
   orderId: number|null;
