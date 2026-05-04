@@ -15,11 +15,14 @@ export type AccountsEvents = {
   };
 }
 
-export type AccountsEvent<K extends keyof AccountsEvents = keyof AccountsEvents> = {
-  event: K;
-  data: AccountsEvents[K];
-  timestamp: number;
-}
+export type AccountsEvent<K extends keyof AccountsEvents = keyof AccountsEvents> =   
+  K extends keyof AccountsEvents 
+    ? {
+        event: K;
+        data: AccountsEvents[K];
+        timestamp: number;
+      }
+    : never;
 
 export type SseHandlerCallbacks = {
   message: (event: AccountsEvent) => void;
