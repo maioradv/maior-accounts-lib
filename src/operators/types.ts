@@ -13,6 +13,17 @@ export type Operator = {
   updatedAt: Date;
 }
 
+export type OperatorSession = {
+  id: number;
+  refreshToken: string;
+  expireAt: Date;
+  ip: string|null;
+  userAgent: string|null;
+  operatorId: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 type PartialOperator = Partial<Omit<Operator,'id'|'createdAt'|'updatedAt'>>
 
 export type CreateOperator = PartialOperator & WithRequired<PartialOperator,'email'|'password'|'operatorRoleId'>
