@@ -42,7 +42,7 @@ export type CreateCustomer = PartialCustomer & WithRequired<PartialCustomer,'ema
   profile?:CreateCustomerProfile
 }
 export type UpdateCustomer = PartialCustomer
-export type RegisterCustomer = Omit<CreateCustomer,'active'|'dashboards'|'profile'>
+export type PushCustomer = Omit<CreateCustomer,'active'|'dashboards'|'profile'>
 
 export type SortingCustomerDto = SortingParamsDto<{
   active?:Sorting,

@@ -1,6 +1,6 @@
 import { PaginatedGQLQueryDto, Resolvers } from "@maioradv/client-core";
 
-export const customersResolvers:Resolvers<['customers'],['removeCustomers','registerCustomer']> = {
+export const customersResolvers:Resolvers<['customers'],['removeCustomers','pushCustomer']> = {
   query:{
     customers:{
       name:'customers',
@@ -40,10 +40,10 @@ export const customersResolvers:Resolvers<['customers'],['removeCustomers','regi
         }
       }`,
     },   
-    registerCustomer:{
-      name:'registerCustomer',
+    pushCustomer:{
+      name:'pushCustomer',
       query: `mutation CustomerRegister($email: String!, $password: String!, $name: String){
-        registerCustomer(email: $email, password: $password, name: $name) {
+        pushCustomer(email: $email, password: $password, name: $name) {
           id
           email
           password

@@ -71,8 +71,14 @@ export enum Permission {
   write_orders = 'write_orders',
   read_tax_rates = 'read_tax_rates',
   write_tax_rates = 'write_tax_rates',
+
+  access_dbs = 'access_dbs',
+  access_tidelizio = 'access_tidelizio',
+  access_notifications = 'access_notifications',
+
   manage_own_dashboards = 'manage_own_dashboards',
   manage_own_companies = 'manage_own_companies',
   manage_own_orders = 'manage_own_orders',
-  register_customer = 'register_customer'
+
+  push_customer = 'push_customer'
 }

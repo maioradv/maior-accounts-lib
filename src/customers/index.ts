@@ -1,6 +1,6 @@
 import { RestApiModuleI, ApiModule, queryParams, RemoveGQL, PaginatedDto, PaginatedGQL, GraphApiModuleI  } from "@maioradv/client-core";
 import { QueryCustomerGQLDto, customersResolvers } from "./graphql";
-import { Customer, CreateCustomer, UpdateCustomer, QueryCustomerDto, RegisterCustomer, CustomerProfile, UpdateCustomerProfile } from "./types";
+import { Customer, CreateCustomer, UpdateCustomer, QueryCustomerDto, PushCustomer, CustomerProfile, UpdateCustomerProfile } from "./types";
 
 export default class Customers extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(data:CreateCustomer): Promise<Customer> {
@@ -31,8 +31,8 @@ export default class Customers extends ApiModule implements RestApiModuleI, Grap
     return this._call<CustomerProfile>('patch',`/customers/${id}/profile`,data)
   }
 
-  register(data:RegisterCustomer) {
-    return this._graphql<Customer>(customersResolvers.mutation.registerCustomer,data)
+  push(data:PushCustomer) {
+    return this._graphql<Customer>(customersResolvers.mutation.pushCustomer,data)
   }
   
   list(args:QueryCustomerGQLDto = {}): Promise<PaginatedGQL<Customer>> {
