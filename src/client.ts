@@ -3,7 +3,7 @@ import { ValidatedApiConfigs, ApiConfigs, validateConfigs } from "./config";
 import { ApiHeader } from "./api";
 import Auth from "./auth";
 import Customers from "./customers";
-import { AccessTokenDto } from "./auth/types";
+import { AccessTokenDto, JwtContextType } from "./auth/types";
 import Dashboards from "./dashboards";
 import DashboardAccesses from "./dashboards/accesses";
 import Operators from "./operators"
@@ -128,9 +128,9 @@ export class AccountsApiClient
     return access
   }
 
-  async authRefresh(refreshToken?:string,context:'customer'|'operator' = 'customer'): Promise<AccessTokenDto> {
+  async authRefresh(refreshToken?:string,context:JwtContextType = JwtContextType.customer): Promise<AccessTokenDto> {
     const access = 
-      context == 'operator' ? await this.authentication.operator.refresh(refreshToken) : 
+      context == JwtContextType.operator ? await this.authentication.operator.refresh(refreshToken) : 
       await this.authentication.customer.refresh(refreshToken)
     this._setAccessToken(access.access_token)
     return access
