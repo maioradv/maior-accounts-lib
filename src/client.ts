@@ -29,6 +29,8 @@ import OrderItemTemplates from "./order-templates/item-templates";
 import TaxRates from "./taxRates";
 import { AuthError } from "@maioradv/client-core";
 import { SseHandler } from "./sse";
+import PushSubscriptions from "./pushSubscriptions";
+import PushNotifications from "./pushNotifications";
 
 export class AccountsApiClient
 {
@@ -60,6 +62,8 @@ export class AccountsApiClient
   orders:Orders;
   orderItems:OrderItems;
   taxRates:TaxRates;
+  pushSubscriptions:PushSubscriptions;
+  pushNotifications:PushNotifications;
   /**
    * @requires Customer - Context Type
    */
@@ -106,6 +110,8 @@ export class AccountsApiClient
     this.orders = new Orders(this.client)
     this.orderItems = new OrderItems(this.client)
     this.taxRates = new TaxRates(this.client)
+    this.pushSubscriptions = new PushSubscriptions(this.client)
+    this.pushNotifications = new PushNotifications(this.client)
     this.me = new Me(this.client)
   }
 

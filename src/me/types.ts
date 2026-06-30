@@ -3,6 +3,7 @@ import { QueryParamsDto } from "@maioradv/client-core";
 import { UpdateCustomer, UpdateCustomerProfile } from "../customers/types";
 import { ClausesDashboardAccessDto, CreateDashboardAccess, Dashboard, DashboardAccess, SortingDashboardAccessDto } from "../dashboards/types";
 import { FindOneOrderDto, OrderRequest, QueryOrderDto } from "../orders/types";
+import { ClausesPushSubscriptionDto, CreatePushSubscriptionDto, SortingPushSubscriptionDto } from "../pushSubscriptions/types";
 
 export type UpdateOwnCustomer = Omit<UpdateCustomer,'active'|'email'|'dashboards'>
 export type UpdateOwnProfile = UpdateCustomerProfile
@@ -16,7 +17,12 @@ export type CreateOwnPaymentMethod = CreatePaymentMethod
 export type UpdateOwnPaymentMethod = UpdatePaymentMethod
 export type CreateOwnDashboardAccess = Omit<CreateDashboardAccess,'dashboardId'>
 export type UpdateOwnDashboardAccess = Partial<Omit<CreateOwnDashboardAccess,'customerId'>>
-export type QueryOwnDashboardAccessDto =  QueryParamsDto<Omit<SortingDashboardAccessDto,'customerId'>,Omit<ClausesDashboardAccessDto,'customerId'>>
+export type QueryOwnDashboardAccessDto = QueryParamsDto<Omit<SortingDashboardAccessDto,'customerId'>,Omit<ClausesDashboardAccessDto,'customerId'>>
+
+export type PutOwnPushSubscriptionDto = Omit<CreatePushSubscriptionDto,'customerId'>
+export type UpdateOwnPushSubscriptionDto = Partial<Omit<CreatePushSubscriptionDto,'token'|'customerId'|'dashboardId'|'deviceId'>>
+export type SortingOwnPushSubscriptionDto = Omit<SortingPushSubscriptionDto,'customerId'>
+export type QueryOwnPushSubscriptionDto = QueryParamsDto<Omit<SortingPushSubscriptionDto,'customerId'>,Omit<ClausesPushSubscriptionDto,'customerId'>>
 
 export type FindAllOwnDashboardAccess = DashboardAccess & {
   Dashboard:Dashboard

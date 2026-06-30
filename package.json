@@ -1,6 +1,6 @@
 {
   "name": "@maioradv/accounts-lib",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "JS lib for Maior Accounts Api",
   "repository": "https://github.com/maioradv/maior-accounts-lib.git",
   "author": "Maior ADV Srl",
@@ -16,8 +16,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@maioradv/client-core": "^0.0.4",
-    "@maioradv/types": "^0.0.4"
+    "@maioradv/client-core": "^0.0.5",
+    "@maioradv/types": "^0.0.7"
   },
   "devDependencies": {
     "@types/node": "^24.6.1",

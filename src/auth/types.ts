@@ -71,6 +71,10 @@ export enum Permission {
   write_orders = 'write_orders',
   read_tax_rates = 'read_tax_rates',
   write_tax_rates = 'write_tax_rates',
+  read_pushsubscriptions = 'read_pushsubscriptions',
+  write_pushsubscriptions = 'write_pushsubscriptions',
+
+  send_pushnotifications = 'send_pushnotifications',
 
   access_dbs = 'access_dbs',
   access_tidelizio = 'access_tidelizio',
@@ -79,6 +83,7 @@ export enum Permission {
   manage_own_dashboards = 'manage_own_dashboards',
   manage_own_companies = 'manage_own_companies',
   manage_own_orders = 'manage_own_orders',
+  manage_own_pushsubscriptions = 'manage_own_pushsubscriptions',
 
   push_customer = 'push_customer'
 }

@@ -10,6 +10,7 @@ import DashboardAccesses from "./dashboard-accesses";
 import ScheduledPayments from "./scheduled-payments";
 import Orders from "./orders";
 import Services from "./services";
+import PushSubscriptions from "./push-subscriptions";
 
 export default class Me extends ApiModule {
   readonly companies:Companies;
@@ -20,6 +21,7 @@ export default class Me extends ApiModule {
   readonly scheduledPayments:ScheduledPayments;
   readonly orders:Orders;
   readonly services:Services;
+  readonly pushSubscriptions:PushSubscriptions;
 
   constructor(client:AxiosInstance){
     super(client)
@@ -31,6 +33,7 @@ export default class Me extends ApiModule {
     this.scheduledPayments = new ScheduledPayments(client)
     this.orders = new Orders(client)
     this.services = new Services(client)
+    this.pushSubscriptions = new PushSubscriptions(client)
   }
 
   info() {
